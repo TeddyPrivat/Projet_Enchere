@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,20 +7,43 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<table>
+		<thead>
+			<tr>
+				<td>Pseudo :</td>
+			</tr>
 
- <thead>
-					<tr>
-						<td>Pseudo :</td><br>
-						<td>Nom :</td><br>
-						<td>Prénom :</td><br>
-						<td>Email :</td><br>
-						<td>Teléphone :</td><br>
-						<td>Rue :</td><br>
-						<td>Code Postal :</td><br>
-						<td>Ville :</td><br>
-					</tr>
-					
-				</thead>
+			<tr>
+				<td>Nom :</td>
+			</tr>
+
+			<tr>
+				<td>Prénom :</td>
+			</tr>
+			<tr>
+				<td>Email :</td>
+			</tr>
+			<tr>
+				<td>Teléphone :</td>
+			</tr>
+			<tr>
+				<td>Rue :</td>
+			</tr>
+			<tr>
+				<td>Code Postal :</td>
+			</tr>
+			<tr>
+				<td>Ville :</td>
+			</tr>
+
+			
+
+			
+
+		</thead>
+	</table>
+
+	<a href="">Modifier</a>
 
 </body>
 </html>

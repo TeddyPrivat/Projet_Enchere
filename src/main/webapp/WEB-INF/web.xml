@@ -42,4 +42,14 @@
     <servlet-name>ServletProfilUtilisateur</servlet-name>
     <url-pattern>/profilptilisateur</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletConnexion</display-name>
+    <servlet-name>ServletConnexion</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConnexion</servlet-name>
+    <url-pattern>/Servletconnexion</url-pattern>
+  </servlet-mapping>
 </web-app>
