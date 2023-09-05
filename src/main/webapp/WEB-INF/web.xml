@@ -40,7 +40,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletProfilUtilisateur</servlet-name>
-    <url-pattern>/profilptilisateur</url-pattern>
+    <url-pattern>/ServletProfilUtilisateur</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -50,6 +50,16 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletConnexion</servlet-name>
-    <url-pattern>/Servletconnexion</url-pattern>
+    <url-pattern>/ServletConnexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDetailsVente</display-name>
+    <servlet-name>ServletDetailsVente</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletDetailsVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDetailsVente</servlet-name>
+    <url-pattern>/ServletDetailsVente</url-pattern>
   </servlet-mapping>
 </web-app>

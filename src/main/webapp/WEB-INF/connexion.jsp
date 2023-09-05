@@ -9,6 +9,13 @@
 <body>
 
 <div>
+	<a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil"/></a>
+
+	</div>
+
+<br>
+
+<div>
   <label for="username">Identifiant:</label>
   <input type="text" id="username" name="username" />
 </div>

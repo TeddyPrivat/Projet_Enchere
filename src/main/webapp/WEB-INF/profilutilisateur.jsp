@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<div>
+		<a href="ServletAccueil"><img src="images/encheres.png"
+			alt="logo qui renvoie à l'accueil" /></a>
+
+	</div>
+
+	<br>
+
 	<table>
 		<thead>
 			<tr>
@@ -36,9 +45,9 @@
 				<td>Ville :</td>
 			</tr>
 
-			
 
-			
+
+
 
 		</thead>
 	</table>
