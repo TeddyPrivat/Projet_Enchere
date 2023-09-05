@@ -52,4 +52,14 @@
     <servlet-name>ServletConnexion</servlet-name>
     <url-pattern>/Servletconnexion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDetailsVente</display-name>
+    <servlet-name>ServletDetailsVente</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletDetailsVente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDetailsVente</servlet-name>
+    <url-pattern>/ServletDetailsVente</url-pattern>
+  </servlet-mapping>
 </web-app>
