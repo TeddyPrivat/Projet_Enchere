@@ -22,10 +22,41 @@
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
 		</select>
+		<table>
+			<thead>
+				<td>
+					<label for="achats">Achats</label>
+					<input type="radio" id="achats">
+				</td>
+				<td>
+					<label for="ventes">Mes ventes</label>
+					<input type="radio" id="ventes">
+				</td>
+			</thead>
+			<tbody>
+				<td>
+					<label for="enchereEnCours">enchères ouvertes</label>
+					<input type="checkbox" id="enchereEnCours">
+					<label for="encheresPerso">mes enchères</label>
+					<input type="checkbox" id="encheresPerso">
+					<label for="encheresGagnees">mes enchères remportées</label>
+					<input type="checkbox" id="encheresGagnees">
+				</td>
+				<td>
+					<label for="ventesEnCours">mes ventes en cours</label>
+					<input type="checkbox" id="ventesEnCours">
+					<label for="ventesAttente">mes ventes non débutées</label>
+					<input type="checkbox" id="ventesAttente">
+					<label for="ventesTerminees">mes ventes terminées</label>
+					<input type="checkbox" id="ventesTerminees">
+				</td>
+			</tbody>
+		</table>
 		<input type="submit" value="Rechercher">
 	</form>
 	<c:choose>
 		<c:when test="${listeArticles.size() > 0}">
+			
 		</c:when>
 		<c:otherwise>
 			<p>Aucune enchère</p>
