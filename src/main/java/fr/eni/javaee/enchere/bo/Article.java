@@ -99,13 +99,13 @@ public class Article {
 	public void setEtatVente(Etat etatVente) {
 		this.etatVente = etatVente;
 	}
-	/*
+	
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
-	}
+	}/*
 	public Retrait getRetrait() {
 		return retrait;
 	}
