@@ -15,12 +15,12 @@
     <url-pattern>/ServletAccueil</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>accueil</servlet-name>
-  	<jsp-file>/WEB-INF/accueil.jsp</jsp-file>
+    <servlet-name>accueil</servlet-name>
+    <jsp-file>/WEB-INF/accueil.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>accueil</servlet-name>
-  	<url-pattern>/accueil</url-pattern>
+    <servlet-name>accueil</servlet-name>
+    <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -31,5 +31,15 @@
   <servlet-mapping>
     <servlet-name>ServletNouvelleVente</servlet-name>
     <url-pattern>/ServletNouvelleVente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletProfilUtilisateur</display-name>
+    <servlet-name>ServletProfilUtilisateur</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletProfilUtilisateur</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProfilUtilisateur</servlet-name>
+    <url-pattern>/profilptilisateur</url-pattern>
   </servlet-mapping>
 </web-app>
