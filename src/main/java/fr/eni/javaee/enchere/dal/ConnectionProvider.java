@@ -1,4 +1,4 @@
-package dal;
+package fr.eni.javaee.enchere.dal;
 
 
 import java.sql.Connection;

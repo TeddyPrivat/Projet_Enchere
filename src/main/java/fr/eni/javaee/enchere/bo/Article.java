@@ -1,4 +1,4 @@
-package bo;
+package fr.eni.javaee.enchere.bo;
 
 import java.time.LocalDate;
 
@@ -28,8 +28,9 @@ public class Article {
 	}
 	private Etat etatVente;
 	
-	/*
+	
 	private Utilisateur utilisateur; 
+	/*
 	private Retrait retrait;
 	private Categorie categorie;
 	private Enchere enchere;*/
