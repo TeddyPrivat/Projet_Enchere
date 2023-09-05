@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div>
-	<a href="ServletAccueil" ><img src="" alt="logo qui renvoie à l'accueil"/></a>
+	<a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil"/></a>
 	<h3>Nouvelle vente</h3>
 	</div>
 	
