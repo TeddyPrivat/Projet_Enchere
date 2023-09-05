@@ -27,12 +27,10 @@ public class Article {
 		}
 	}
 	private Etat etatVente;
-	
-	
+	private Categorie categorie;
 	private Utilisateur utilisateur; 
 	/*
 	private Retrait retrait;
-	private Categorie categorie;
 	private Enchere enchere;*/
 	
 	

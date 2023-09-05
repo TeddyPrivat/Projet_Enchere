@@ -19,7 +19,7 @@
 		<label for="categorie">Catégorie :</label>
 		<select id="categorie" name="categorie">
 			<c:forEach items="${categories }" var="categorieArticle">
-				<option value="${categorieArticle.no_categorie}">${categorieArticle.libelle}</option>
+				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
 		</select>
 		<input type="submit" value="Rechercher">
