@@ -2,16 +2,24 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
   <display-name>Projet_enchere</display-name>
   <welcome-file-list>
-    <welcome-file>ServletTest</welcome-file>
+    <welcome-file>ServletAccueil</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ServletTest</display-name>
-    <servlet-name>ServletTest</servlet-name>
-    <servlet-class>fr.eni.servlets.ServletTest</servlet-class>
+    <display-name>ServletAccueil</display-name>
+    <servlet-name>ServletAccueil</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletAccueil</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletTest</servlet-name>
-    <url-pattern>/ServletTest</url-pattern>
+    <servlet-name>ServletAccueil</servlet-name>
+    <url-pattern>/ServletAccueil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>accueil</servlet-name>
+  	<jsp-file>/WEB-INF/accueil.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>accueil</servlet-name>
+  	<url-pattern>/accueil</url-pattern>
   </servlet-mapping>
 </web-app>
