@@ -40,7 +40,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletProfilUtilisateur</servlet-name>
-    <url-pattern>/profilptilisateur</url-pattern>
+    <url-pattern>/ServletProfilUtilisateur</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -50,7 +50,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletConnexion</servlet-name>
-    <url-pattern>/Servletconnexion</url-pattern>
+    <url-pattern>/ServletConnexion</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
