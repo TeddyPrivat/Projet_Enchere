@@ -18,7 +18,11 @@
 </style>
 </head>
 <body>
+	<div>
+	<a href="ServletAccueil" ><img src="" alt="logo qui renvoie à l'accueil"/></a>
 	<h3>Nouvelle vente</h3>
+	</div>
+	
 	<form method="post" action="ServletNouvelleVente">
 	<label for="article">Article</label>
 	<input type="text" name="article" id="article"/>
@@ -30,8 +34,9 @@
 	<br>
 	<label for="categorie-select">Catégorie</label>
 	<select id="categorie-select" name="categorie-select">
-		<option value=""></option>
-		<option value="test">Option 1</option>
+		<c:forEach items="${categories }" var="categorieArticle">
+			<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
+		</c:forEach>
 	</select>
 	<br>
 	<br>
@@ -49,8 +54,8 @@
 	<br>
 	<label for="finenchere">Fin de l'enchère</label>
 	<input type="date" name="finenchere" id="finenchere"/>
-	<br> 
-	<br>
+	
+	<h3>Retrait</h3>
 	<div class="retrait">
 		<table>
 			<tr>
