@@ -24,5 +24,12 @@
 		</select>
 		<input type="submit" value="Rechercher">
 	</form>
+	<c:choose>
+		<c:when test="${listeArticles.size() > 0}">
+		</c:when>
+		<c:otherwise>
+			<p>Aucune enchère</p>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
