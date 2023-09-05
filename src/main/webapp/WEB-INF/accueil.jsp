@@ -22,6 +22,7 @@
 			<option value="${categorieArticle.no_categorie}">${categorieArticle.libelle}</option>
 		</c:forEach>
 		</select>
+		<input type="submit" value="Rechercher">
 	</form>
 </body>
 </html>
