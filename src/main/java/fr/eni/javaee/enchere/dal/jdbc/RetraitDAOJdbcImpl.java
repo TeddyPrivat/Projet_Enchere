@@ -18,6 +18,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 	@Override
 	public Article selectById(int noArticle) {
 		Article articleRetrait = null;
+		Retrait retrait = null;
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_ID);
@@ -28,9 +29,9 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 				String rue = rs.getString("rue");
 				int codePostal = rs.getInt("code_postal");
 				String ville = rs.getString("ville");
+				retrait = new Retrait(rue, codePostal, ville);
 			}
-			
-			articleRetrait.setRetrait(rue, codePostal, ville);
+			articleRetrait.setRetrait(retrait);
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
