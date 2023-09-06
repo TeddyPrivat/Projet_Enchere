@@ -2,15 +2,12 @@ package fr.eni.javaee.enchere.servlets;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet implementation class Connexion
- */
+
 public class ServletConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -20,10 +17,18 @@ public class ServletConnexion extends HttpServlet {
 		
 	}
 
+	public void Connexion(String username, String motDePasse) {
+		
+	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String identifiant = request.getParameter("username");
+		String motDePasse = request.getParameter("pass");
 		
-		doGet(request, response);
+		System.out.println(identifiant);
+		System.out.println(motDePasse);
 	}
+	
+	
 
 }
