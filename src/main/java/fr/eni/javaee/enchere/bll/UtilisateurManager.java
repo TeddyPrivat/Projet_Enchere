@@ -13,7 +13,7 @@ private static UtilisateurManager instance;
 	
 	public UtilisateurManager() {};
 	
-	public String selectByIdentifiant(String identifiant,String mdp) {
+	public boolean selectByIdentifiant(String identifiant,String mdp) {
 		return DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant,mdp);
 	}
 }

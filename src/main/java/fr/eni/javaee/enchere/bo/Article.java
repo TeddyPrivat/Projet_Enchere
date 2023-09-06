@@ -27,11 +27,11 @@ public class Article {
 		}
 	}
 	private Etat etatVente;
+	
 	private Categorie categorie;
 	private Utilisateur utilisateur; 
 	private Retrait retrait;
-	/*
-	private Enchere enchere;*/
+	private Enchere enchere;
 	
 	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
@@ -119,7 +119,7 @@ public class Article {
 	public void setRetrait(Retrait retrait) {
 		this.retrait = retrait;
 	}
-	/*
+	
 	public Categorie getCategorie() {
 		return categorie;
 	}
@@ -131,7 +131,7 @@ public class Article {
 	}
 	public void setEnchere(Enchere enchere) {
 		this.enchere = enchere;
-	}*/
+	}
 	@Override
 	public String toString() {
 		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description

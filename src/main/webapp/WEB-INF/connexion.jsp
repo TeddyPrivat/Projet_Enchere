@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Connexion</title>
+<style>
+.infoConnexion{
+	color:red;
+}
+</style>
 </head>
 <body>
 
@@ -23,8 +29,11 @@
   <label for="pass">Mot de passe :</label>
   <input type="password" id="pass" name="pass" />
 </div>
-
-<br>
+		<c:choose> 
+			<c:when test="${estConnecte == false }">
+				<p class="infoConnexion">Mot de passe ou identifiant incorrect</p>
+			</c:when>
+		</c:choose>	
 
 <input type="submit" value="Connexion"/>
 </form>

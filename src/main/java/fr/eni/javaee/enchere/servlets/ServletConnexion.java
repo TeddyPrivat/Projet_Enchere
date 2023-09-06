@@ -14,6 +14,18 @@ public class ServletConnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("get attribute " + request.getAttribute("estConnecte"));
+		System.out.println("get " + request.getParameter("estConnecte"));
+		System.out.println(request.getParameter("estConnecte"));
+		
+		
+		//boolean estConnecte = Boolean.valueOf(request.getAttribute("estConnecte"));
+		/*
+		System.out.println("bool " + estConnecte);
+		
+		if(estConnecte == false) {
+			
+		}*/
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
 		rd.forward(request, response);
 		
@@ -24,9 +36,8 @@ public class ServletConnexion extends HttpServlet {
 		String identifiant = request.getParameter("username");
 		String motDePasse = request.getParameter("pass");
 		
-		System.out.println(DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant,motDePasse));
-		
-		
+		boolean estConnecte = DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant,motDePasse);
+		request.setAttribute("estConnecte", estConnecte);
 		doGet(request, response);
 	}
 	
