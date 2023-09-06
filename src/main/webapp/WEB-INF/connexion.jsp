@@ -4,17 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Connexion</title>
 </head>
 <body>
 
 <div>
 	<a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil"/></a>
-
-	</div>
+</div>
 
 <br>
-
+<form method="post" action="ServletConnexion">
 <div>
   <label for="username">Identifiant:</label>
   <input type="text" id="username" name="username" />
@@ -27,8 +26,8 @@
 
 <br>
 
-<a href="#">Connexion</a>
-
+<input type="submit" value="Connexion"/>
+</form>
 <br>
 
 <div>
