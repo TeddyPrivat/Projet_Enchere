@@ -18,6 +18,10 @@ public class EnchereManager {
 	
 	private EnchereManager() {};
 	
+	public List<Enchere> selectAllEncheresEnCours(){
+		return DAOFactory.getEnchereDAO().selectAllEncheresEnCours();
+	}
+	
 	public List<Enchere> selectById(Utilisateur utilisateur){
 		return DAOFactory.getEnchereDAO().selectById(utilisateur);
 	}

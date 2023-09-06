@@ -7,6 +7,8 @@ import fr.eni.javaee.enchere.bo.Utilisateur;
 
 public interface EnchereDAO {
 	
+	public List<Enchere> selectAllEncheresEnCours();
+	
 	public List<Enchere> selectById(Utilisateur utilisateur);
 
 }

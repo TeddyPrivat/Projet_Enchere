@@ -5,7 +5,7 @@ import fr.eni.javaee.enchere.bo.Retrait;
 
 public interface RetraitDAO {
 	
-	public Article selectById(int noArticle);
+	public Retrait selectById(int noArticle);
 	
 	public void insertRetrait(Retrait retrait, int noArticle);
 

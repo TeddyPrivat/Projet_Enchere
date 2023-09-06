@@ -16,11 +16,11 @@ public class RetraitManager {
 	
 	public RetraitManager() {};
 	
-	public Article selectById(int noArticle) {
+	public Retrait selectById(int noArticle) {
 		return DAOFactory.getRetraitDAO().selectById(noArticle);
 	}
 	
-	public void insertRetrait(String rue, int codePostal, String ville, int noArticle) {
+	public void insertRetrait(String rue, String codePostal, String ville, int noArticle) {
 		Retrait retrait = new Retrait(rue, codePostal, ville);
 		DAOFactory.getRetraitDAO().insertRetrait(retrait, noArticle);
 	}
