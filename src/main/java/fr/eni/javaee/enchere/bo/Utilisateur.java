@@ -112,8 +112,5 @@ public class Utilisateur {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-
-
-	
 	
 }
