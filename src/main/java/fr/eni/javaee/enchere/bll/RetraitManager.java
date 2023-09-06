@@ -16,7 +16,7 @@ public class RetraitManager {
 	
 	public RetraitManager() {};
 	
-	public Article selectById(int noArticle) {
+	public Retrait selectById(int noArticle) {
 		return DAOFactory.getRetraitDAO().selectById(noArticle);
 	}
 	

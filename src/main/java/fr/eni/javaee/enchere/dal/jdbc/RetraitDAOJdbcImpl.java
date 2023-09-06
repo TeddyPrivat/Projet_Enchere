@@ -12,32 +12,32 @@ import fr.eni.javaee.enchere.dal.RetraitDAO;
 
 public class RetraitDAOJdbcImpl implements RetraitDAO{
 	
-	private final static String SELECT_BY_ID = "SELECT * FROM RETRAITS INNER JOIN ARTICLES ON no_article = no_article WHERE no_article = ?;";
-	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?);";
-
+	private final static String SELECT_BY_ID = "SELECT ARTICLES.no_article, rue, code_postal, ville FROM  ARTICLES + "
+			+ " LEFT JOIN RETRAITS ON ARTICLES.no_article = RETRAITS.no_article WHERE ARTICLES.no_article = ?;";
+	
 	@Override
-	public Article selectById(int noArticle) {
-		Article articleRetrait = null;
+	public Retrait selectById(int noArticle) {
 		Retrait retrait = null;
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_ID);
 			pstmt.setInt(1, noArticle);
+			
 			ResultSet rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				String rue = rs.getString("rue");
 				String codePostal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
-				retrait = new Retrait(rue, codePostal, ville);
+				retrait = new Retrait(rue, codePostal, ville);	
 			}
-			articleRetrait.setRetrait(retrait);
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return articleRetrait;
+		return retrait;
 	}
+	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?);";
 
 	@Override
 	public void insertRetrait(Retrait retrait, int noArticle) {

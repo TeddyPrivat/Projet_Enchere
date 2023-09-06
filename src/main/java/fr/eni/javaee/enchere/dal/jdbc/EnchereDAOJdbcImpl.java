@@ -16,7 +16,7 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
-	private final static String SELECT_ALL_ENCHERES_EN_COURS = "SELECT * FROM ENCHERES INNER JOIN ARTICLES ON no_article = no_article INNER JOIN UTILISATEURS ON no_utilisateur = no_utilisateur;";
+	private final static String SELECT_ALL_ENCHERES_EN_COURS = "SELECT * FROM ENCHERES INNER JOIN ARTICLES ON ARTICLES.no_article = ENCHERES.no_article INNER JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur = ENCHERES.no_utilisateur;";
 
 	@Override
 	public List<Enchere> selectAllEncheresEnCours() {
