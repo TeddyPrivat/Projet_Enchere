@@ -4,12 +4,12 @@ public class Retrait {
 	
 	private Article noArticleRetrait;
 	private String rue;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	
 	public Retrait() {};
 	
-	public Retrait(String rue, int codePostal, String ville) {
+	public Retrait(String rue, String codePostal, String ville) {
 		this();
 		this.rue = rue;
 		this.codePostal = codePostal;
@@ -32,11 +32,11 @@ public class Retrait {
 		return this.rue;
 	}
 	
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return this.codePostal;
 	}
 	

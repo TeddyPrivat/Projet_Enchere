@@ -27,7 +27,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 			
 			while(rs.next()) {
 				String rue = rs.getString("rue");
-				int codePostal = rs.getInt("code_postal");
+				String codePostal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				retrait = new Retrait(rue, codePostal, ville);
 			}
@@ -46,7 +46,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 			PreparedStatement pstmt = cnx.prepareStatement(INSERT_RETRAIT);
 			pstmt.setInt(1, noArticle);
 			pstmt.setString(2, retrait.getRue());
-			pstmt.setInt(3, retrait.getCodePostal());
+			pstmt.setString(3, retrait.getCodePostal());
 			pstmt.setString(4, retrait.getVille());
 			pstmt.executeUpdate();
 			

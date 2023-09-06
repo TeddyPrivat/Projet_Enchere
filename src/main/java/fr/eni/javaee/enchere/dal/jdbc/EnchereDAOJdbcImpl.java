@@ -39,15 +39,25 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				LocalDate finEnchere = rs.getDate("date_fin_encheres").toLocalDate();
 				int miseAPrix = rs.getInt("prix_initial");
 				int prixVente = rs.getInt("prix_vente");
-				Article article = new Article(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix, prixVente);
+				
 				int noUtilisateur = rs.getInt("no_utilisateur");
 				String pseudo = rs.getString("pseudo");
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
+				String email = rs.getString("email");
+				String telephone = rs.getString("telephone");
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("code_postal");
+				String ville = rs.getString("ville");
+				String motDePasse = rs.getString("mot_de_passe");
+				int credit = rs.getInt("credit");
 				
 				if(dateActuelle.isEqual(debutEnchere) || dateActuelle.isAfter(debutEnchere) && dateActuelle.isBefore(finEnchere)) {
-					enchere = new Enchere();
+					enchere = new Enchere(noEnchere, dateEnchere, montantEnchere);
+					Article article = new Article(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix, prixVente);
 					enchere.setArticle(article);
+					Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
+					enchere.setUtilisateur(utilisateur);
 					encheresEnCours.add(enchere);
 				}
 			}
@@ -56,7 +66,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return encheresEnCours;
 	}
 	
 	@Override
