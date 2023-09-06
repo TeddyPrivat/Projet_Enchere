@@ -24,10 +24,10 @@ public class ServletConnexion extends HttpServlet {
 		String identifiant = request.getParameter("username");
 		String motDePasse = request.getParameter("pass");
 		
-		System.out.println(identifiant);
-		System.out.println(motDePasse);
+		System.out.println(DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant,motDePasse));
 		
-		DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant);
+		
+		doGet(request, response);
 	}
 	
 	

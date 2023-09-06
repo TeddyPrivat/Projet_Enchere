@@ -28,9 +28,6 @@ private static DataSource dataSource;
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/pool_cnx");
 			Connection cnx = dataSource.getConnection();
 			
-			System.out.println("La connexion est : " + 
-							(cnx.isClosed() ? " fermée" : "ouverte"));
-			
 			//3. libère la connexion
 			cnx.close();
 		} catch (NamingException e) {
