@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import fr.eni.javaee.enchere.bll.CategorieManager;
+import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bo.Categorie;
+import fr.eni.javaee.enchere.bo.Enchere;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +33,14 @@ public class ServletAccueil extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int categorieSelectionne = Integer.valueOf(request.getParameter("categorie"));
+		Categorie categorieAffichage = categories.stream().filter(c -> c.getNoCategorie() == categorieSelectionne).findFirst().get();
+		System.out.println(categorieAffichage);
+		request.setAttribute("categorieAffichage", categorieAffichage);
+
+		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheresEnCours();
+		request.setAttribute("encheres", encheres);
 
 		doGet(request, response);
 	}
