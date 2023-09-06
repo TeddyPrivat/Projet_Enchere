@@ -18,6 +18,7 @@
 		<input type="text" name="nomArticle" placeholder="Le nom de l'article contient">
 		<label for="categorie">Catégorie :</label>
 		<select id="categorie" name="categorie">
+			<option name="toutesEncheresEnCours">Toutes</option>
 			<c:forEach items="${categories }" var="categorieArticle">
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
@@ -64,7 +65,7 @@
 				<li><a href="">${article.nomArticle }</a></li>
 				<li>Prix: ${article.prixVente } points</li>
 				<li>Fin de l'enchère: ${article.dateFinEncheres }</li>
-				<li>Vendeur: <a href="/profilutilisateur">${article.utilisateur }</a></li>
+				<li>Vendeur: <a href="/ServletProfilUtilisateur">${article.utilisateur }</a></li>
 			</ul>
 		</c:when>
 		<c:otherwise>
