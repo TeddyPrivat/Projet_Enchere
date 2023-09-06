@@ -22,7 +22,6 @@ public class Utilisateur {
 	}
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, int credit) {
-		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -34,6 +33,11 @@ public class Utilisateur {
 		this.ville = ville;
 		this.motDePasse = motDePasse;
 		this.credit = credit;
+	}
+	
+	public Utilisateur(String pseudo, String motDePasse) {
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
 	}
 	
 	
@@ -109,4 +113,7 @@ public class Utilisateur {
 		this.credit = credit;
 	}
 
+
+	
+	
 }

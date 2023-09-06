@@ -105,13 +105,14 @@ public class Article {
 	}
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
-	}/*
+	}
 	public Retrait getRetrait() {
 		return retrait;
 	}
 	public void setRetrait(Retrait retrait) {
 		this.retrait = retrait;
 	}
+	/*
 	public Categorie getCategorie() {
 		return categorie;
 	}
