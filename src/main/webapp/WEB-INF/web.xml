@@ -62,4 +62,14 @@
     <servlet-name>ServletDetailsVente</servlet-name>
     <url-pattern>/ServletDetailsVente</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletInscription</display-name>
+    <servlet-name>ServletInscription</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletInscription</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInscription</servlet-name>
+    <url-pattern>/ServletInscription</url-pattern>
+  </servlet-mapping>
 </web-app>
