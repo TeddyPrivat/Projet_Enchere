@@ -11,11 +11,11 @@ import fr.eni.javaee.enchere.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 
-	private final static String SELECT_USER_IF_EXIST = "SELECT mot_de_passe FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
+	private final static String SELECT_USER_IF_EXIST = "SELECT no_utilisateur FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
 	
 	@Override
-	public boolean selectByIdentifiant(String identifiant,String mdp) {
-		boolean estConnecte = false;
+	public int selectByIdentifiant(String identifiant,String mdp) {
+		int estConnecte = 0;
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_USER_IF_EXIST);
 			pstmt.setString(1, identifiant);	//pseudo
@@ -24,9 +24,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(!rs.next()) {	//si la requête ne renvoie aucune ligne 
-				estConnecte = false;
+				estConnecte = 0;
 			}else {	//si elle en renvoie une -> cet utilisateur peut se connecter
-				estConnecte = true; //à récupérer si on veut savoir si nous sommes connectés
+				estConnecte = rs.getInt(1); //à récupérer si on veut savoir si nous sommes connectés
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

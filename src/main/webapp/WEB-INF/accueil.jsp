@@ -10,18 +10,15 @@
 <body>
 	<img src="images/encheres.png" alt="logo du site d'enchères">
 	<h1>Bienvenue sur le site des enchères par troc</h1>
-<<<<<<< HEAD
-	<a href="ServletConnexion">S'inscrire - Se connecter</a>
-=======
+
 		<c:choose>
-			<c:when test="${estConnecte}">
+			<c:when test="${estConnecte != 0}">
 				<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <a href="${estConnecte }">Déconnexion</a>
 			</c:when>
 			<c:otherwise>
 				<a href="ServletConnexion">S'inscrire - Se connecter</a>
 			</c:otherwise>
 		</c:choose>
->>>>>>> branch 'master' of https://github.com/TeddyPrivat/Projet_Enchere.git
 	<br>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
@@ -33,7 +30,7 @@
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
 		</select>
-		<c:if test="${estConnecte }">
+		<c:if test="${estConnecte != 0}">
 			<table>
 				<thead>
 					<td>
