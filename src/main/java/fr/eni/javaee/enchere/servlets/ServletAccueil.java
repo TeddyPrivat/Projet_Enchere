@@ -33,13 +33,14 @@ public class ServletAccueil extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheresEnCours();
+		encheres.forEach(c -> System.out.println(c.toString()));
 		int categorieSelectionne = Integer.valueOf(request.getParameter("categorie"));
 		Categorie categorieAffichage = categories.stream().filter(c -> c.getNoCategorie() == categorieSelectionne).findFirst().get();
-		System.out.println(categorieAffichage);
+		System.out.println(categorieAffichage + "lolololloollollollollolo");
 		request.setAttribute("categorieAffichage", categorieAffichage);
 
-		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheresEnCours();
+		
 		request.setAttribute("encheres", encheres);
 
 		doGet(request, response);
