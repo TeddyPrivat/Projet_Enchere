@@ -12,7 +12,7 @@ import fr.eni.javaee.enchere.dal.UtilisateurDAO;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 
 	private final static String SELECT_USER_IF_EXIST = "SELECT mot_de_passe FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
-	private final static String INSERT_UTILISATEUR = "";
+	
 	@Override
 	public boolean selectByIdentifiant(String identifiant,String mdp) {
 		boolean estConnecte = false;
@@ -34,10 +34,27 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 		return estConnecte;
 	}
 
+	private final static String INSERT_UTILISATEUR = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur)"
+			+ "VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 	@Override
 	public void insertUtilisateur(Utilisateur utilisateur) {
-		
-		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(INSERT_UTILISATEUR);
+			pstmt.setString(1, utilisateur.getPseudo());
+			pstmt.setString(2, utilisateur.getNom());
+			pstmt.setString(3, utilisateur.getPrenom());
+			pstmt.setString(4, utilisateur.getEmail());
+			pstmt.setString(5, utilisateur.getTelephone());
+			pstmt.setString(6, utilisateur.getRue());
+			pstmt.setString(7, utilisateur.getCodePostal());
+			pstmt.setString(8, utilisateur.getVille());
+			pstmt.setString(9, utilisateur.getMotDePasse());
+			pstmt.setInt(10, utilisateur.getCredit());
+			pstmt.setByte(11, utilisateur.getAdministrateur());
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	
