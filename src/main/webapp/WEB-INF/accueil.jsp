@@ -10,7 +10,7 @@
 <body>
 	<img src="images/encheres.png" alt="logo du site d'enchères">
 	<h1>Bienvenue sur le site des enchères par troc</h1>
-	<a href="">S'inscrire - Se connecter</a>
+	<a href="ServletConnexion">S'inscrire - Se connecter</a>
 	<br>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>

@@ -39,15 +39,15 @@
     
       <h3>Mon profil</h3>
 
-<form method="POST" action=Servletinscription>
+<form method="POST" action=ServletInscription>
     <div>
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" >
         </div>
         <div>
-            <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom" >
+            <label for="name">Nom :</label>
+            <input type="text" name="nom" id="name" >
         </div>
     </div>
     <div>
@@ -72,7 +72,7 @@
     </div>
     <div>
         <div>
-            <label for="codePostal">Code postale  :</label>
+            <label for="codePostal">Code postal  :</label>
             <input type="text" name="codePostal" id="codePostal" >
         </div>
         <div>
