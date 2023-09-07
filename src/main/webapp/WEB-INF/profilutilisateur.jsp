@@ -4,14 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Profil utilisateur</title>
 </head>
 <body>
 
 	<div>
 		<a href="ServletAccueil"><img src="images/encheres.png"
 			alt="logo qui renvoie à l'accueil" /></a>
-
 	</div>
 
 	<br>
@@ -44,11 +43,6 @@
 			<tr>
 				<td>Ville :</td>
 			</tr>
-
-
-
-
-
 		</thead>
 	</table>
 

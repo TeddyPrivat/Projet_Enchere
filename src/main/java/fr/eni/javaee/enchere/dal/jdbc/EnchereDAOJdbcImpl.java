@@ -9,6 +9,8 @@ import java.util.List;
 import java.sql.Statement;
 
 import fr.eni.javaee.enchere.bo.Article;
+import fr.eni.javaee.enchere.bo.Article.Etat;
+import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;
@@ -16,7 +18,7 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
-	private final static String SELECT_ALL_ENCHERES_EN_COURS = "SELECT * FROM ENCHERES INNER JOIN ARTICLES ON ARTICLES.no_article = ENCHERES.no_article INNER JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur = ENCHERES.no_utilisateur;";
+	private final static String SELECT_ALL_ENCHERES_EN_COURS = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
 
 	@Override
 	public List<Enchere> selectAllEncheresEnCours() {
@@ -32,6 +34,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				int noEnchere = rs.getInt("no_enchere");
 				LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
 				int montantEnchere = rs.getInt("montant_enchere");
+				
 				int noArticle = rs.getInt("no_article");
 				String nomArticle = rs.getString("nom_article");
 				String description = rs.getString("description");
@@ -39,6 +42,9 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				LocalDate finEnchere = rs.getDate("date_fin_encheres").toLocalDate();
 				int miseAPrix = rs.getInt("prix_initial");
 				int prixVente = rs.getInt("prix_vente");
+				
+				int noCategorie = rs.getInt("no_categorie");
+				String libelle = rs.getString("libelle");
 				
 				int noUtilisateur = rs.getInt("no_utilisateur");
 				String pseudo = rs.getString("pseudo");
@@ -55,6 +61,9 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				if(dateActuelle.isEqual(debutEnchere) || dateActuelle.isAfter(debutEnchere) && dateActuelle.isBefore(finEnchere)) {
 					enchere = new Enchere(noEnchere, dateEnchere, montantEnchere);
 					Article article = new Article(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix, prixVente);
+					article.setEtatVente(Etat.EN_VENTE);
+					Categorie categorie = new Categorie(noCategorie, libelle);
+					article.setCategorie(categorie);
 					enchere.setArticle(article);
 					Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
 					enchere.setUtilisateur(utilisateur);

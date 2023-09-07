@@ -74,6 +74,7 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+<<<<<<< HEAD
     <display-name>ServletModificationDeProfil</display-name>
     <servlet-name>ServletModificationDeProfil</servlet-name>
     <servlet-class>fr.eni.javaee.enchere.servlets.ServletModificationDeProfil</servlet-class>
@@ -81,5 +82,14 @@
   <servlet-mapping>
     <servlet-name>ServletModificationDeProfil</servlet-name>
     <url-pattern>/ModificationDeProfil</url-pattern>
+=======
+    <display-name>ServletTestConnexion</display-name>
+    <servlet-name>ServletTestConnexion</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletTestConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTestConnexion</servlet-name>
+    <url-pattern>/ServletTestConnexion</url-pattern>
+>>>>>>> branch 'master' of https://github.com/TeddyPrivat/Projet_Enchere.git
   </servlet-mapping>
 </web-app>

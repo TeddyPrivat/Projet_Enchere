@@ -18,7 +18,6 @@
 		<input type="text" name="nomArticle" placeholder="Le nom de l'article contient">
 		<label for="categorie">Catégorie :</label>
 		<select id="categorie" name="categorie">
-			<option name="toutesEncheresEnCours">Toutes</option>
 			<c:forEach items="${categories }" var="categorieArticle">
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
@@ -60,13 +59,30 @@
 		<input type="submit" value="Rechercher">
 	</form>
 	<c:choose>
-		<c:when test="${listeArticles.size() > 0}">
-			<ul>
-				<li><a href="">${article.nomArticle }</a></li>
-				<li>Prix: ${article.prixVente } points</li>
-				<li>Fin de l'enchère: ${article.dateFinEncheres }</li>
-				<li>Vendeur: <a href="/ServletProfilUtilisateur">${article.utilisateur }</a></li>
-			</ul>
+		<c:when test="${encheres.size() > 0}">
+			<c:forEach items = "${encheres }" var = "enchere">
+				<c:choose>
+					<c:when test="${categorieAffichage.noCategorie == enchere.article.categorie.noCategorie }">
+						<ul>
+							<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+							<li>Prix: ${enchere.article.prixVente } points</li>
+							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+							<li>Vendeur: <a href="ServletProfilUtilisateur">${enchere.utilisateur.pseudo }</a></li>
+						</ul>
+					</c:when>
+					<c:when test="${categorieAffichage.noCategorie == 5 }">
+						<ul>
+							<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+							<li>Prix: ${enchere.article.prixVente } points</li>
+							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+							<li>Vendeur: <a href="ServletProfilUtilisateur">${enchere.utilisateur.pseudo }</a></li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						Aucune enchère pour la catégorie demandée
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 		</c:when>
 		<c:otherwise>
 			<p>Aucune enchère</p>
