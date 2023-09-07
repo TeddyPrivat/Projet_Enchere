@@ -72,4 +72,14 @@
     <servlet-name>ServletInscription</servlet-name>
     <url-pattern>/ServletInscription</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletTestConnexion</display-name>
+    <servlet-name>ServletTestConnexion</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletTestConnexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTestConnexion</servlet-name>
+    <url-pattern>/ServletTestConnexion</url-pattern>
+  </servlet-mapping>
 </web-app>
