@@ -10,7 +10,14 @@
 <body>
 	<img src="images/encheres.png" alt="logo du site d'enchères">
 	<h1>Bienvenue sur le site des enchères par troc</h1>
-	<a href="">S'inscrire - Se connecter</a>
+	<c:choose>
+		<c:when test="estConnecte">
+			<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="">Mon profil</a>
+		</c:when>
+		<c:otherwise>
+			<a href="ServletConnexion">S'inscrire - Se connecter</a>
+		</c:otherwise>
+	</c:choose>
 	<br>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
@@ -79,13 +86,13 @@
 						</ul>
 					</c:when>
 					<c:otherwise>
-						Aucune enchère pour la catégorie demandée
+						Aucune enchère pour la catégorie demandée en ce moment
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<p>Aucune enchère</p>
+			<p>Aucune enchère en cours :(</p>
 		</c:otherwise>
 	</c:choose>
 </body>
