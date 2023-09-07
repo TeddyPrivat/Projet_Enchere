@@ -22,7 +22,7 @@
     <servlet-name>accueil</servlet-name>
     <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
-  <servlet>
+   <servlet>
     <description></description>
     <display-name>ServletNouvelleVente</display-name>
     <servlet-name>ServletNouvelleVente</servlet-name>
