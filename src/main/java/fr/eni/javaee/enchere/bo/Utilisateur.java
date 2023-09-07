@@ -13,6 +13,7 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private int credit;
+	private byte administrateur;
 	//private Administrateur administrateur;
 	
 	
@@ -21,7 +22,7 @@ public class Utilisateur {
 		return noUtilisateur;
 	}
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, int credit) {
+			String rue, String codePostal, String ville, String motDePasse,int credit) {
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -32,7 +33,37 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.credit = credit;
+		this.credit = 100;
+		this.administrateur = 0;
+	}
+	
+	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse) {
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.credit = 100;
+		this.administrateur = 0;
+	}
+	//TEST
+	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
+			String rue,  String ville, String motDePasse) {
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.credit = 100;
+		this.administrateur = 0;
 	}
 	
 	public Utilisateur(String pseudo, String motDePasse) {
@@ -111,6 +142,12 @@ public class Utilisateur {
 	}
 	public void setCredit(int credit) {
 		this.credit = credit;
+	}
+	public byte getAdministrateur() {
+		return administrateur;
+	}
+	public void setAdministrateur(byte administrateur) {
+		this.administrateur = administrateur;
 	}
 	
 }
