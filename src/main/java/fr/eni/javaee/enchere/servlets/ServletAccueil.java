@@ -35,13 +35,18 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session = request.getSession();
-		if(session.getAttribute("estConnecte") != null) {
-			boolean estConnecte = (boolean) session.getAttribute("estConnecte");
-			System.out.println(estConnecte);
-			request.setAttribute("estConnecte", estConnecte);
-			System.out.println(estConnecte);
-		}
+		System.out.println(session);
+		//int estConnecte = (int) session.getAttribute("estConnecte");
+		/*System.out.println(estConnecte);
 		
+		if(session.getAttribute("estConnecte") != null) {
+			estConnecte = (int) session.getAttribute("estConnecte");
+			System.out.println(estConnecte);
+			System.out.println("Je suis dans le if");
+			request.setAttribute("estConnecte", estConnecte);
+		}
+		System.out.println("Je suis en dehors du if");
+		*/
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
 	}

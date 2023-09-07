@@ -11,8 +11,8 @@
 	<img src="images/encheres.png" alt="logo du site d'enchères">
 	<h1>Bienvenue sur le site des enchères par troc</h1>
 	<c:choose>
-		<c:when test="${estConnecte}">
-			<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <a href="ServletAccueil?noUtilisateur=""">Déconnexion</a>
+		<c:when test="${estConnecte != null}">
+			<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <a href="${session.invalidate()}">Déconnexion</a>
 		</c:when>
 		<c:otherwise>
 			<a href="ServletConnexion">S'inscrire - Se connecter</a>
@@ -31,7 +31,7 @@
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
 		</select>
-		<c:if test="${estConnecte }">
+		<c:if test="${estConnecte != null }">
 			<table>
 				<thead>
 					<td>
