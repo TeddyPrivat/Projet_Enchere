@@ -11,7 +11,6 @@ import fr.eni.javaee.enchere.servlets.*;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -40,6 +39,7 @@ public class ServletAccueil extends HttpServlet {
 			boolean estConnecte = (boolean) session.getAttribute("estConnecte");
 			System.out.println(estConnecte);
 			request.setAttribute("estConnecte", estConnecte);
+			System.out.println(estConnecte);
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
