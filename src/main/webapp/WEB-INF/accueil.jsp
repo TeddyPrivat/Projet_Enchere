@@ -22,9 +22,11 @@
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
 		Filtres :
-		<input type="text" name="nomArticle" placeholder="Le nom de l'article contient">
+		<input type="text" name="rechercheArticle" placeholder="Le nom de l'article contient">
+		<br>
 		<label for="categorie">Catégorie :</label>
 		<select id="categorie" name="categorie">
+			<option value = "" disabled selected>Choisissez une catégorie</option>
 			<c:forEach items="${categories }" var="categorieArticle">
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
@@ -34,11 +36,11 @@
 				<thead>
 					<td>
 						<label for="achats">Achats</label>
-						<input type="radio" id="achats">
+						<input type="radio" id="achats" name="choixRadio">
 					</td>
 					<td>
 						<label for="ventes">Mes ventes</label>
-						<input type="radio" id="ventes">
+						<input type="radio" id="ventes" name="choixRadio">
 					</td>
 				</thead>
 				<tbody>
@@ -65,11 +67,20 @@
 				</tbody>
 			</table>
 		</c:if>
+		<br>
 		<input type="submit" value="Rechercher">
 	</form>
 	<c:choose>
 		<c:when test="${encheres.size() > 0}">
 			<c:forEach items = "${encheres }" var = "enchere">
+				<c:if test="${nomArticleSaisi.equalsIgnoreCase(enchere.article.nomArticle) }">
+					<ul>
+						<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+						<li>Prix: ${enchere.article.prixVente } points</li>
+						<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+						<li>Vendeur: <a href="ServletProfilUtilisateur">${enchere.utilisateur.pseudo }</a></li>
+					</ul>
+				</c:if>
 				<c:choose>
 					<c:when test="${categorieAffichage.noCategorie == enchere.article.categorie.noCategorie }">
 						<ul>

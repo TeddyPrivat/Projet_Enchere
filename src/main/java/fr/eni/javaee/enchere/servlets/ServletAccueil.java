@@ -48,9 +48,17 @@ public class ServletAccueil extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int categorieSelectionne = Integer.valueOf(request.getParameter("categorie"));
-		Categorie categorieAffichage = categories.stream().filter(c -> c.getNoCategorie() == categorieSelectionne).findFirst().get();
-		request.setAttribute("categorieAffichage", categorieAffichage);
+		if(request.getParameter("rechercheArticle") != null) {
+			String nomArticleSaisi = request.getParameter("rechercheArticle");
+			System.out.println(nomArticleSaisi);
+			request.setAttribute("nomArticleSaisi", nomArticleSaisi);
+		}
+		
+		if(request.getParameter("categorie") != null) {
+			int categorieSelectionne = Integer.valueOf(request.getParameter("categorie"));
+			Categorie categorieAffichage = categories.stream().filter(c -> c.getNoCategorie() == categorieSelectionne).findFirst().get();
+			request.setAttribute("categorieAffichage", categorieAffichage);
+		}
 
 		doGet(request, response);
 	}
