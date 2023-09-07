@@ -72,4 +72,14 @@
     <servlet-name>ServletInscription</servlet-name>
     <url-pattern>/ServletInscription</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletModificationDeProfil</display-name>
+    <servlet-name>ServletModificationDeProfil</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletModificationDeProfil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletModificationDeProfil</servlet-name>
+    <url-pattern>/ModificationDeProfil</url-pattern>
+  </servlet-mapping>
 </web-app>
