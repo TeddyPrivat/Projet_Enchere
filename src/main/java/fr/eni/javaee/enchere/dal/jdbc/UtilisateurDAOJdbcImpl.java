@@ -5,13 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import fr.eni.javaee.enchere.bo.Utilisateur;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;
 import fr.eni.javaee.enchere.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 
 	private final static String SELECT_USER_IF_EXIST = "SELECT mot_de_passe FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
-
+	private final static String INSERT_UTILISATEUR = "";
 	@Override
 	public boolean selectByIdentifiant(String identifiant,String mdp) {
 		boolean estConnecte = false;
@@ -31,6 +32,12 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 			e.printStackTrace();
 		}
 		return estConnecte;
+	}
+
+	@Override
+	public void insertUtilisateur(Utilisateur utilisateur) {
+		
+		
 	}
 
 	
