@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import fr.eni.javaee.enchere.bll.CategorieManager;
-import fr.eni.javaee.enchere.bll.DAOFactory;
 import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
+import fr.eni.javaee.enchere.servlets.*;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	List<Categorie> categories;
+	HttpSession session = null;
 	
 	public void init() throws ServletException{
 		categories = CategorieManager.getInstance().selectAll();
@@ -33,9 +35,13 @@ public class ServletAccueil extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		boolean estConnecte = Boolean.valueOf(request.getParameter("estConnecte"));
-		System.out.println(estConnecte);
+		session = request.getSession();
+		if(session.getAttribute("estConnecte") != null) {
+			boolean estConnecte = (boolean) session.getAttribute("estConnecte");
+			System.out.println(estConnecte);
+			request.setAttribute("estConnecte", estConnecte);
+		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
 	}
