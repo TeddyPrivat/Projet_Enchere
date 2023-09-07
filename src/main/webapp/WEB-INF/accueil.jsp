@@ -10,7 +10,18 @@
 <body>
 	<img src="images/encheres.png" alt="logo du site d'enchères">
 	<h1>Bienvenue sur le site des enchères par troc</h1>
+<<<<<<< HEAD
 	<a href="ServletConnexion">S'inscrire - Se connecter</a>
+=======
+		<c:choose>
+			<c:when test="${estConnecte}">
+				<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <a href="${estConnecte }">Déconnexion</a>
+			</c:when>
+			<c:otherwise>
+				<a href="ServletConnexion">S'inscrire - Se connecter</a>
+			</c:otherwise>
+		</c:choose>
+>>>>>>> branch 'master' of https://github.com/TeddyPrivat/Projet_Enchere.git
 	<br>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
@@ -22,40 +33,42 @@
 				<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 			</c:forEach>
 		</select>
-		<table>
-			<thead>
-				<td>
-					<label for="achats">Achats</label>
-					<input type="radio" id="achats">
-				</td>
-				<td>
-					<label for="ventes">Mes ventes</label>
-					<input type="radio" id="ventes">
-				</td>
-			</thead>
-			<tbody>
-				<td>
-					<label for="enchereEnCours">enchères ouvertes</label>
-					<input type="checkbox" id="enchereEnCours">
-					<br>
-					<label for="encheresPerso">mes enchères</label>
-					<input type="checkbox" id="encheresPerso">
-					<br>
-					<label for="encheresGagnees">mes enchères remportées</label>
-					<input type="checkbox" id="encheresGagnees">
-				</td>
-				<td>
-					<label for="ventesEnCours">mes ventes en cours</label>
-					<input type="checkbox" id="ventesEnCours">
-					<br>
-					<label for="ventesAttente">mes ventes non débutées</label>
-					<input type="checkbox" id="ventesAttente">
-					<br>
-					<label for="ventesTerminees">mes ventes terminées</label>
-					<input type="checkbox" id="ventesTerminees">
-				</td>
-			</tbody>
-		</table>
+		<c:if test="${estConnecte }">
+			<table>
+				<thead>
+					<td>
+						<label for="achats">Achats</label>
+						<input type="radio" id="achats">
+					</td>
+					<td>
+						<label for="ventes">Mes ventes</label>
+						<input type="radio" id="ventes">
+					</td>
+				</thead>
+				<tbody>
+					<td>
+						<label for="enchereEnCours">enchères ouvertes</label>
+						<input type="checkbox" id="enchereEnCours">
+						<br>
+						<label for="encheresPerso">mes enchères</label>
+						<input type="checkbox" id="encheresPerso">
+						<br>
+						<label for="encheresGagnees">mes enchères remportées</label>
+						<input type="checkbox" id="encheresGagnees">
+					</td>
+					<td>
+						<label for="ventesEnCours">mes ventes en cours</label>
+						<input type="checkbox" id="ventesEnCours">
+						<br>
+						<label for="ventesAttente">mes ventes non débutées</label>
+						<input type="checkbox" id="ventesAttente">
+						<br>
+						<label for="ventesTerminees">mes ventes terminées</label>
+						<input type="checkbox" id="ventesTerminees">
+					</td>
+				</tbody>
+			</table>
+		</c:if>
 		<input type="submit" value="Rechercher">
 	</form>
 	<c:choose>
@@ -79,13 +92,13 @@
 						</ul>
 					</c:when>
 					<c:otherwise>
-						Aucune enchère pour la catégorie demandée
+						Aucune enchère pour la catégorie demandée en ce moment
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 		</c:when>
 		<c:otherwise>
-			<p>Aucune enchère</p>
+			<p>Aucune enchère en cours :(</p>
 		</c:otherwise>
 	</c:choose>
 </body>
