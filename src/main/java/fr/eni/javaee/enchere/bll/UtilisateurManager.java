@@ -1,5 +1,7 @@
 package fr.eni.javaee.enchere.bll;
 
+import fr.eni.javaee.enchere.bo.Utilisateur;
+
 public class UtilisateurManager {
 
 private static UtilisateurManager instance;
@@ -17,5 +19,7 @@ private static UtilisateurManager instance;
 		return DAOFactory.getUtilisateurDAO().selectByIdentifiant(identifiant,mdp);
 	}
 	
-	//insert
+	public void insertUtilisateur(Utilisateur utilisateur) {
+		 DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
+	}
 }
