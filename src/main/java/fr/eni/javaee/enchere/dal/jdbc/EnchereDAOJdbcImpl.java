@@ -71,6 +71,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				}
 			}
 			
+			stmt.close();
+			
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

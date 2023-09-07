@@ -32,6 +32,8 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 				retrait = new Retrait(rue, codePostal, ville);	
 			}
 			
+			pstmt.close();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,6 +51,8 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 			pstmt.setString(3, retrait.getCodePostal());
 			pstmt.setString(4, retrait.getVille());
 			pstmt.executeUpdate();
+			
+			pstmt.close();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
