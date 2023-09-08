@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
+import fr.eni.javaee.enchere.bo.Article.Etat;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
 
@@ -20,13 +21,14 @@ public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	List<Categorie> categories;
+	List<Enchere> encheres;
 	HttpSession session = null;
 	
 	public void init() throws ServletException{
 		categories = CategorieManager.getInstance().selectAll();
 		this.getServletContext().setAttribute("categories", categories);
 		
-		List<Enchere> encheres = EnchereManager.getInstance().selectAllEncheresEnCours();
+		encheres = EnchereManager.getInstance().selectAllEncheres();
 		this.getServletContext().setAttribute("encheres", encheres);
 	}
 
@@ -34,7 +36,9 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session = request.getSession();
-		session.getAttribute("estConnecte");
+		if(session != null) {
+			session.getAttribute("estConnecte");
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -43,20 +47,29 @@ public class ServletAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session = request.getSession();
-		if(request.getParameter("deconnexion") != null){
-			System.out.println("Je suis dans le if de la déco");
-			session.invalidate();
-		}
 		
 		if(session.getAttribute("estConnecte") != null) {
-			int estConnecte = (int) session.getAttribute("estConnecte");
-			System.out.println(estConnecte + "Je suis le syso de post");
+			int coAManipuler = (int) session.getAttribute("estConnecte");
+			request.setAttribute("coAManipuler", coAManipuler);
+		}
+		
+		if(request.getParameter("deconnexion") != null){
+			session.invalidate();
 		}
 		
 		if(request.getParameter("rechercheArticle") != null) {
 			String nomArticleSaisi = request.getParameter("rechercheArticle");
-			System.out.println(nomArticleSaisi);
 			request.setAttribute("nomArticleSaisi", nomArticleSaisi);
+		}
+		
+		if(request.getParameter("achats") != null) {
+			int achat = Integer.valueOf(request.getParameter("achats"));
+			request.setAttribute("achat", achat);
+		}
+		
+		if(request.getParameter("ventes") != null) {
+			int vente = Integer.valueOf(request.getParameter("ventes"));
+			request.setAttribute("vente", vente);
 		}
 		
 		if(request.getParameter("categorie") != null) {

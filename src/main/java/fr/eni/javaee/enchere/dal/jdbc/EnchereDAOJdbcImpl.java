@@ -18,17 +18,17 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
-	private final static String SELECT_ALL_ENCHERES_EN_COURS = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
+	private final static String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
 
 	@Override
-	public List<Enchere> selectAllEncheresEnCours() {
-		List<Enchere> encheresEnCours = new ArrayList<>();
+	public List<Enchere> selectAllEncheres() {
+		List<Enchere> encheres = new ArrayList<>();
 		Enchere enchere = null;
 		LocalDate dateActuelle = LocalDate.now();
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			Statement stmt = cnx.createStatement();
-			ResultSet rs = stmt.executeQuery(SELECT_ALL_ENCHERES_EN_COURS);
+			ResultSet rs = stmt.executeQuery(SELECT_ALL_ENCHERES);
 			
 			while(rs.next()) {
 				int noEnchere = rs.getInt("no_enchere");
@@ -58,17 +58,27 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				String motDePasse = rs.getString("mot_de_passe");
 				int credit = rs.getInt("credit");
 				
-				if(dateActuelle.isEqual(debutEnchere) || dateActuelle.isAfter(debutEnchere) && dateActuelle.isBefore(finEnchere)) {
-					enchere = new Enchere(noEnchere, dateEnchere, montantEnchere);
-					Article article = new Article(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix, prixVente);
-					article.setEtatVente(Etat.EN_VENTE);
-					Categorie categorie = new Categorie(noCategorie, libelle);
-					article.setCategorie(categorie);
-					enchere.setArticle(article);
-					Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
-					enchere.setUtilisateur(utilisateur);
-					encheresEnCours.add(enchere);
+				enchere = new Enchere(noEnchere, dateEnchere, montantEnchere);
+				Article article = new Article(noArticle, nomArticle, description, debutEnchere, finEnchere, miseAPrix, prixVente);
+				
+				if(dateActuelle.isBefore(debutEnchere)) {
+					article.setEtatVente(Etat.A_VENDRE);
 				}
+				
+				if(dateActuelle.isEqual(debutEnchere) || dateActuelle.isAfter(debutEnchere) && dateActuelle.isBefore(finEnchere)) {
+					article.setEtatVente(Etat.EN_VENTE);
+				}
+				
+				if(dateActuelle.isEqual(finEnchere) || dateActuelle.isAfter(finEnchere)) {
+					article.setEtatVente(Etat.VENDU);
+				}
+				
+				Categorie categorie = new Categorie(noCategorie, libelle);
+				article.setCategorie(categorie);
+				enchere.setArticle(article);
+				Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
+				enchere.setUtilisateur(utilisateur);
+				encheres.add(enchere);
 			}
 			
 			stmt.close();
@@ -77,13 +87,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		return encheresEnCours;
+		return encheres;
 	}
 	
-	@Override
-	public List<Enchere> selectById(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
