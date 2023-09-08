@@ -8,11 +8,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import fr.eni.javaee.enchere.bll.UtilisateurManager;
+import fr.eni.javaee.enchere.bo.Utilisateur;
+
 
 public class ServletProfilUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Utilisateur utilisateur = UtilisateurManager.getInstance().selectInfoUtilisateur(2);
+		int iduser1 = UtilisateurManager.getInstance().selectByIdentifiant(utilisateur.getPseudo(),utilisateur.getMotDePasse());
+		utilisateur = UtilisateurManager.getInstance().selectInfoUtilisateur(iduser1);
+		System.out.println(iduser1+"id");
+		System.out.println("coucou"+utilisateur);
+		request.setAttribute("utilisateur", utilisateur);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/profilutilisateur.jsp");
 		rd.forward(request, response);
 		
