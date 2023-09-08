@@ -7,7 +7,6 @@ import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
-import fr.eni.javaee.enchere.servlets.*;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -35,7 +34,7 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session = request.getSession();
-		System.out.println(session);
+		//System.out.println(session);
 		//int estConnecte = (int) session.getAttribute("estConnecte");
 		/*System.out.println(estConnecte);
 		

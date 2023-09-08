@@ -1,6 +1,5 @@
 package fr.eni.javaee.enchere.bll;
 
-import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Retrait;
 
 public class RetraitManager {
