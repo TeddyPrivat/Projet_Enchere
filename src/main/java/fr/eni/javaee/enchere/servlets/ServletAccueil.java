@@ -34,16 +34,7 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		session = request.getSession();
-
-		//int estConnecte = (int) session.getAttribute("estConnecte");
-		
-		/*
-		if(session.getAttribute("estConnecte") != null && deconnexion.equals("deconnexion")) {
-			System.out.println("Je suis dans le if");
-			session.invalidate();	
-		}
-		*/
-		System.out.println("Je suis en dehors du if");
+		session.getAttribute("estConnecte");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
@@ -55,6 +46,11 @@ public class ServletAccueil extends HttpServlet {
 		if(request.getParameter("deconnexion") != null){
 			System.out.println("Je suis dans le if de la déco");
 			session.invalidate();
+		}
+		
+		if(session.getAttribute("estConnecte") != null) {
+			int estConnecte = (int) session.getAttribute("estConnecte");
+			System.out.println(estConnecte + "Je suis le syso de post");
 		}
 		
 		if(request.getParameter("rechercheArticle") != null) {

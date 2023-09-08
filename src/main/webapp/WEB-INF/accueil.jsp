@@ -19,6 +19,8 @@
 		</c:otherwise>
 	</c:choose>
 	<br>
+	${estConnecte }
+	<br>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
 		Filtres :
@@ -79,6 +81,12 @@
 						<li>Prix: ${enchere.article.prixVente } points</li>
 						<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 						<li>Vendeur: <a href="ServletProfilUtilisateur">${enchere.utilisateur.pseudo }</a></li>
+					</ul>
+				</c:if>
+				<c:if test="${estConnecte == {enchere.utilisateur.noUtilisateur }">
+					<ul>
+						<li>${enchere.utilisateur }</li>
+						<li>${enchere.article }</li>
 					</ul>
 				</c:if>
 				<c:choose>
