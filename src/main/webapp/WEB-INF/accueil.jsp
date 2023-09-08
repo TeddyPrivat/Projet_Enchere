@@ -12,7 +12,7 @@
 	<h1>Bienvenue sur le site des enchères par troc</h1>
 	<c:choose>
 		<c:when test="${estConnecte != null}">
-			<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur?myId=${estConnecte }">Mon profil</a> <form method = "POST" action="ServletAccueil"><input type = "submit" name = "deconnexion" value = "Déconnexion"></form>
+			<a href="ServletDetailsVente?myId=${estConnecte }">Enchères</a> <a href="ServletNouvelleVente?myId=${estConnecte }">Vendre un article</a> <a href="ServletProfilUtilisateur?myId=${estConnecte }">Mon profil</a> <form method = "POST" action="ServletAccueil"><input type = "submit" name = "deconnexion" value = "Déconnexion"></form>
 		</c:when>
 		<c:otherwise>
 			<a href="ServletConnexion">S'inscrire - Se connecter</a>
@@ -75,7 +75,7 @@
 			<c:forEach items = "${encheres }" var = "enchere">
 				<c:if test="${nomArticleSaisi.equalsIgnoreCase(enchere.article.nomArticle) && enchere.article.etatVente == 'En vente' }">
 					<ul>
-						<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+						<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 						<li>Prix: ${enchere.article.prixVente } points</li>
 						<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 						<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -86,7 +86,7 @@
 						<c:when test="${achat != null && achat == 1 }">
 							<c:if test ="${enchere.utilisateur.noUtilisateur != coAManipuler }">
 								<ul>
-									<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 									<li>Prix: ${enchere.article.prixVente } points</li>
 									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -95,7 +95,7 @@
 						</c:when>
 						<c:when test="${achat != null && achat == 2 }">
 							<ul>
-								<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+								<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 								<li>Prix: ${enchere.article.prixVente } points</li>
 								<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 								<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -103,7 +103,7 @@
 						</c:when>
 						<c:when test="${achat != null && achat == 3 }">
 							<ul>
-								<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+								<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 								<li>Prix: ${enchere.article.prixVente } points</li>
 								<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 								<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -112,7 +112,7 @@
 						<c:when test="${vente != null && vente == 1 }">
 							<c:if test="${enchere.utilisateur.noUtilisateur == coAManipuler && enchere.article.etatVente == 'En vente' }">
 								<ul>
-									<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 									<li>Prix: ${enchere.article.prixVente } points</li>
 									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -122,7 +122,7 @@
 						<c:when test="${vente != null && vente == 2 }">
 							<c:if test="${enchere.utilisateur.noUtilisateur == coAManipuler && enchere.article.etatVente == 'A vendre' }">
 								<ul>
-									<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 									<li>Prix: ${enchere.article.prixVente } points</li>
 									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -132,7 +132,7 @@
 						<c:when test="${vente != null && vente == 3 }">
 							<c:if test="${enchere.utilisateur.noUtilisateur == coAManipuler && enchere.article.etatVente == 'Vendu' }">
 								<ul>
-									<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 									<li>Prix: ${enchere.article.prixVente } points</li>
 									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -144,7 +144,7 @@
 				<c:choose>
 					<c:when test="${categorieAffichage.noCategorie == enchere.article.categorie.noCategorie && enchere.article.etatVente == 'En vente' }">
 						<ul>
-							<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+							<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 							<li>Prix: ${enchere.article.prixVente } points</li>
 							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 							<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
@@ -152,7 +152,7 @@
 					</c:when>
 					<c:when test="${categorieAffichage.noCategorie == 5 && enchere.article.etatVente == 'En vente' }">
 						<ul>
-							<li><a href="ServletDetailsVente">${enchere.article.nomArticle }</a></li>
+							<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
 							<li>Prix: ${enchere.article.prixVente } points</li>
 							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
 							<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
