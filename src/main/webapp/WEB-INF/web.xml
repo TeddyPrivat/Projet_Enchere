@@ -74,12 +74,14 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ServletTestConnexion</display-name>
-    <servlet-name>ServletTestConnexion</servlet-name>
-    <servlet-class>fr.eni.javaee.enchere.servlets.ServletTestConnexion</servlet-class>
+
+    <display-name>ServletModificationDeProfil</display-name>
+    <servlet-name>ServletModificationDeProfil</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletModificationDeProfil</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletTestConnexion</servlet-name>
-    <url-pattern>/ServletTestConnexion</url-pattern>
+    <servlet-name>ServletModificationDeProfil</servlet-name>
+    <url-pattern>/ModificationDeProfil</url-pattern>
+
   </servlet-mapping>
 </web-app>

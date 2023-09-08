@@ -11,7 +11,12 @@ import fr.eni.javaee.enchere.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 
+
+	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_UTILISATEUR=?;";
+	
+
 	private final static String SELECT_USER_IF_EXIST = "SELECT no_utilisateur FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
+
 	
 	@Override
 	public int selectByIdentifiant(String identifiant,String mdp) {
@@ -57,5 +62,21 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 		}
 	}
 
+	
+	public void deleteUtilisateur(int no_UTILISATEUR) {
+		
+		try (Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pStmt = cnx.prepareStatement(DELETE);
+			pStmt.setInt(1, no_UTILISATEUR);
+			pStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
 	
 }
