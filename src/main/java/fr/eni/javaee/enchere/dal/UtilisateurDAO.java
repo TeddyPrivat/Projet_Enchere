@@ -9,4 +9,6 @@ public interface UtilisateurDAO {
 	public void insertUtilisateur(Utilisateur utilisateur);
 	
 	public void deleteUtilisateur(int no_utilisateur );
+	
+	public Utilisateur selectInfoUtilisateur(int no_utilisateur);
 }

@@ -18,30 +18,30 @@
 	<table>
 		<thead>
 			<tr>
-				<td>Pseudo :</td>
+				<td>Pseudo : ${utilisateur.pseudo }</td>
 			</tr>
 
 			<tr>
-				<td>Nom :</td>
+				<td>Nom : ${utilisateur.nom }</td>
 			</tr>
 
 			<tr>
-				<td>Prénom :</td>
+				<td>Prénom : ${utilisateur.prenom }</td>
 			</tr>
 			<tr>
-				<td>Email :</td>
+				<td>Email : ${utilisateur.email }</td>
 			</tr>
 			<tr>
-				<td>Teléphone :</td>
+				<td>Teléphone : ${utilisateur.telephone }</td>
 			</tr>
 			<tr>
-				<td>Rue :</td>
+				<td>Rue : ${utilisateur.rue }</td>
 			</tr>
 			<tr>
-				<td>Code Postal :</td>
+				<td>Code Postal : ${utilisateur.codePostal }</td>
 			</tr>
 			<tr>
-				<td>Ville :</td>
+				<td>Ville : ${utilisateur.ville }</td>
 			</tr>
 		</thead>
 	</table>

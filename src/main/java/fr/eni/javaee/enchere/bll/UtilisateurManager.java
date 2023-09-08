@@ -28,4 +28,8 @@ private static UtilisateurManager instance;
 		DAOFactory.getUtilisateurDAO().deleteUtilisateur(no_utilisateur);
 	}
 	
+	public Utilisateur selectInfoUtilisateur(int no_utilisateur) {
+		return DAOFactory.getUtilisateurDAO().selectInfoUtilisateur(no_utilisateur);
+		
+	}
 }
