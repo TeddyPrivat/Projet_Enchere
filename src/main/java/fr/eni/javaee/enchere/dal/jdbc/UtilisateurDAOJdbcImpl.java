@@ -16,6 +16,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 	
 
 	private final static String SELECT_USER_IF_EXIST = "SELECT no_utilisateur FROM UTILISATEURS WHERE ((pseudo=? OR email=?) AND mot_de_passe=?);";
+	
+	private final static String SELECT_USER_UTILISATEUR = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal, ville  FROM UTILISATEURS WHERE no_utilisateur =?;";
 
 	
 	@Override
@@ -75,8 +77,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO{
 		
 	}
 	
-	
-	
-	
+	public void selectUserUtilisateur(String no_utilisateur) {
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_USER_UTILISATEUR);
+			pstmt.setString(1, no_utilisateur);
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
