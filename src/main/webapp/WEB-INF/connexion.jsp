@@ -30,7 +30,7 @@
 			<label for="pass">Mot de passe :</label> <input type="password"
 				id="pass" name="pass" />
 		</div>
-		<c:if test="${estConnecte == false }">
+		<c:if test="${estConnecte == 0 }">
 			<p class="infoConnexion">Mot de passe ou identifiant incorrect</p>
 		</c:if>
 
