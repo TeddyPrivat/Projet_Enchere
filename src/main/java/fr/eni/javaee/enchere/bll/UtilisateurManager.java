@@ -22,4 +22,9 @@ private static UtilisateurManager instance;
 	public void insertUtilisateur(Utilisateur utilisateur) {
 		 DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
 	}
+	
+	
+	public void deleteUtilisateur(int no_utilisateur) {
+		DAOFactory.getUtilisateurDAO().deleteUtilisateur(no_utilisateur);
+	}
 }

@@ -7,4 +7,6 @@ public interface UtilisateurDAO {
 	public boolean selectByIdentifiant(String identifiant,String mdp);
 	
 	public void insertUtilisateur(Utilisateur utilisateur);
+	
+	public void deleteUtilisateur(int no_utilisateur );
 }
