@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,10 @@
 			</tr>
 		</thead>
 	</table>
-
-	<a href="">Modifier</a>
+	
+		<c:if test="${afficheBouton}"> 
+			<a href="">Modifier</a>
+		</c:if>
 
 </body>
 </html>
