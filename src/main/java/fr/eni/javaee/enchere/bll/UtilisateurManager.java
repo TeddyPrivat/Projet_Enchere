@@ -27,4 +27,5 @@ private static UtilisateurManager instance;
 	public void deleteUtilisateur(int no_utilisateur) {
 		DAOFactory.getUtilisateurDAO().deleteUtilisateur(no_utilisateur);
 	}
+	
 }
