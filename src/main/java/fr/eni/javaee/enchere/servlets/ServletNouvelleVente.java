@@ -20,6 +20,7 @@ import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
+import fr.eni.javaee.enchere.bo.Retrait;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 
 
@@ -81,7 +82,7 @@ public class ServletNouvelleVente extends HttpServlet {
 		
 		Utilisateur vendeur = UtilisateurManager.getInstance().selectInfoUtilisateur(noVendeur);
 		Article nouveauArticle = new Article(nomArticle, description, dateDebutEnchere, dateFinEnchere, miseAPrix, categorie, vendeur);
-		nouveauArticle.ajouterRetrait(rue, codePostal, ville);
+		Retrait retrait = new Retrait(rue, codePostal, ville);
 		EnchereManager.getInstance().insertArticle(nouveauArticle, vendeur, retrait);
 		
 		request.setAttribute("nouveauArticle", nouveauArticle);

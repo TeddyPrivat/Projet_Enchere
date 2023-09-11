@@ -6,6 +6,7 @@ import java.util.List;
 import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
+import fr.eni.javaee.enchere.bo.Retrait;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 
 public class EnchereManager {
@@ -34,9 +35,10 @@ public class EnchereManager {
 		return nouvelleVente;
 	}
 	
-	public void insertArticle(Article article, Utilisateur vendeur) {
+	public void insertArticle(Article article, Utilisateur vendeur, Retrait retrait) {
 		int noVendeur = vendeur.getNoUtilisateur();
-		DAOFactory.getEnchereDAO().insertArticle(article, noVendeur);
+		DAOFactory.getRetraitDAO().insertRetrait(article.getNoArticle(), retrait);
+		DAOFactory.getEnchereDAO().insertArticle(article, noVendeur, retrait);
 	}
 	
 }

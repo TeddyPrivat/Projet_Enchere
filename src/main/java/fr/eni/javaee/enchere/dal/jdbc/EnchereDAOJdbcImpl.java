@@ -140,7 +140,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 
 	@Override
-	public void insertArticle(Article article, int vendeur) {
+	public void insertArticle(Article article, int vendeur, Retrait retrait) {
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			try {
@@ -162,6 +162,13 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 					int noArticle = rs.getInt(1);
 					article.setNoArticle(noArticle);
 					
+					pstmt = cnx.prepareStatement(INSERT_RETRAIT);
+					pstmt.setInt(1, noArticle);
+					pstmt.setString(2, retrait.getRue());
+					pstmt.setString(3, retrait.getCodePostal());
+					pstmt.setString(4, retrait.getVille());
+					pstmt.executeUpdate();
+					
 					Enchere enchere = new Enchere();
 					enchere.setArticle(article);
 					pstmt = cnx.prepareStatement(INSERT_ENCHERE);
@@ -171,13 +178,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 					pstmt.setInt(4, vendeur);
 					pstmt.executeUpdate();
 					
-					Retrait retrait = new Retrait();
-					pstmt = cnx.prepareStatement(INSERT_RETRAIT);
-					pstmt.setInt(1, noArticle);
-					pstmt.setString(2, retrait.getRue());
-					pstmt.setString(3, retrait.getCodePostal());
-					pstmt.setString(4, retrait.getVille());
-					pstmt.executeUpdate();
 				}
 			
 			cnx.commit();
