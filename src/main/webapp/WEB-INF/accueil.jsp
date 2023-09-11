@@ -75,12 +75,24 @@
 		<c:when test="${encheres.size() > 0}">
 			<c:forEach items = "${encheres }" var = "enchere">
 				<c:if test="${nomArticleSaisi.equalsIgnoreCase(enchere.article.nomArticle) && enchere.article.etatVente == 'En vente' }">
-					<ul>
-						<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
-						<li>Prix: ${enchere.article.prixVente } points</li>
-						<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
-						<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
-					</ul>
+					<c:choose>
+						<c:when test="${estConnecte != null}">
+							<ul>
+								<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
+								<li>Prix: ${enchere.article.prixVente } points</li>
+								<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+								<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul>
+								<li>${enchere.article.nomArticle }</li>
+								<li>Prix: ${enchere.article.prixVente } points</li>
+								<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+								<li>Vendeur: ${enchere.utilisateur.pseudo }</li>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 				</c:if>
 				<c:if test="${estConnecte != null}">
 					<c:choose>
@@ -144,20 +156,44 @@
 				</c:if>
 				<c:choose>
 					<c:when test="${categorieAffichage.noCategorie == enchere.article.categorie.noCategorie && enchere.article.etatVente == 'En vente' }">
-						<ul>
-							<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
-							<li>Prix: ${enchere.article.prixVente } points</li>
-							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
-							<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
-						</ul>
+						<c:choose>
+							<c:when test="${estConnecte != null}">
+								<ul>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
+									<li>Prix: ${enchere.article.prixVente } points</li>
+									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<li>${enchere.article.nomArticle }</li>
+									<li>Prix: ${enchere.article.prixVente } points</li>
+									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+									<li>Vendeur: ${enchere.utilisateur.pseudo }</li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</c:when>
 					<c:when test="${categorieAffichage.noCategorie == 5 && enchere.article.etatVente == 'En vente' }">
-						<ul>
-							<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
-							<li>Prix: ${enchere.article.prixVente } points</li>
-							<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
-							<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
-						</ul>
+						<c:choose>
+							<c:when test="${estConnecte != null}">
+								<ul>
+									<li><a href="ServletDetailsVente?noArticle="${enchere.article.noArticle }">${enchere.article.nomArticle }</a></li>
+									<li>Prix: ${enchere.article.prixVente } points</li>
+									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+									<li>Vendeur: <a href="ServletProfilUtilisateur?noUtilisateur=${enchere.utilisateur.noUtilisateur }">${enchere.utilisateur.pseudo }</a></li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<li>${enchere.article.nomArticle }</li>
+									<li>Prix: ${enchere.article.prixVente } points</li>
+									<li>Fin de l'enchère: ${enchere.article.dateFinEncheres }</li>
+									<li>Vendeur: ${enchere.utilisateur.pseudo }</li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</c:when>
 					<c:otherwise>
 						Aucune enchère pour la catégorie demandée en ce moment

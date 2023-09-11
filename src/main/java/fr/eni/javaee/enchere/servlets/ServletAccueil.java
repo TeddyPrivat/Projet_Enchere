@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
+import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Article.Etat;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
@@ -59,6 +60,7 @@ public class ServletAccueil extends HttpServlet {
 		
 		if(request.getParameter("rechercheArticle") != null) {
 			String nomArticleSaisi = request.getParameter("rechercheArticle");
+			//Article nomArticleSaisiLike = EnchereManager.getInstance().selectNomArticleLike(nomArticleSaisi);
 			request.setAttribute("nomArticleSaisi", nomArticleSaisi);
 		}
 		

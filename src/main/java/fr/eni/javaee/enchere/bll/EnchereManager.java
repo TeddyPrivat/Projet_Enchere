@@ -2,8 +2,8 @@ package fr.eni.javaee.enchere.bll;
 
 import java.util.List;
 
+import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Enchere;
-import fr.eni.javaee.enchere.bo.Utilisateur;
 
 public class EnchereManager {
 	
@@ -20,6 +20,10 @@ public class EnchereManager {
 	
 	public List<Enchere> selectAllEncheres(){
 		return DAOFactory.getEnchereDAO().selectAllEncheres();
+	}
+	
+	public Article selectNomArticleLike(String articleNom) {
+		return DAOFactory.getEnchereDAO().selectNomArticleLike(articleNom);
 	}
 	
 }
