@@ -48,7 +48,7 @@
 	</table>
 	
 		<c:if test="${afficheBouton}"> 
-			<a href="">Modifier</a>
+			<a href="ModificationDeProfil">Modifier</a>
 		</c:if>
 
 </body>

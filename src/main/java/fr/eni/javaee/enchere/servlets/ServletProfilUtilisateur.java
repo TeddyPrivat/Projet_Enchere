@@ -50,7 +50,6 @@ public class ServletProfilUtilisateur extends HttpServlet {
 		System.out.println("idSession " + session.getAttribute("estConnecte"));
 
 		request.setAttribute("afficheBouton", afficheBouton);
-		
 		request.setAttribute("utilisateur", utilisateur);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/profilutilisateur.jsp");
 		rd.forward(request, response);
