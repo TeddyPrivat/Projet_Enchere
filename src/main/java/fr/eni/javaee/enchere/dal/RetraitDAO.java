@@ -7,6 +7,6 @@ public interface RetraitDAO {
 	
 	public Retrait selectById(int noArticle);
 	
-	public void insertRetrait(Retrait retrait, int noArticle);
+	public void insertRetrait(int noArticle, Retrait retrait);
 
 }

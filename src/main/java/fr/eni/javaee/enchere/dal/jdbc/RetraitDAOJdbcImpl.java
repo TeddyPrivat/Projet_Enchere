@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Retrait;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;
 import fr.eni.javaee.enchere.dal.RetraitDAO;
@@ -39,10 +38,10 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 		}
 		return retrait;
 	}
-	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?);";
+	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
 
 	@Override
-	public void insertRetrait(Retrait retrait, int noArticle) {
+	public void insertRetrait(int noArticle, Retrait retrait) {
 		
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement pstmt = cnx.prepareStatement(INSERT_RETRAIT);

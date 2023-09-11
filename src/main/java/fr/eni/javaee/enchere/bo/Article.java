@@ -2,6 +2,8 @@ package fr.eni.javaee.enchere.bo;
 
 import java.time.LocalDate;
 
+import fr.eni.javaee.enchere.bll.RetraitManager;
+
 public class Article {
 
 	private int noArticle;
@@ -51,6 +53,15 @@ public class Article {
 		this.prixVente = prixVente;
 	}
 	
+	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, Categorie categorie, Utilisateur utilisateur) {
+		this(nomArticle);
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.categorie = categorie;
+		this.utilisateur = utilisateur;
+	}
 	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente, Etat etatVente) {
@@ -133,6 +144,7 @@ public class Article {
 	public void setEnchere(Enchere enchere) {
 		this.enchere = enchere;
 	}
+	
 	@Override
 	public String toString() {
 		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
