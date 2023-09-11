@@ -33,28 +33,29 @@ public class Article {
 	private Retrait retrait;
 	private Enchere enchere;
 	
+	public Article() {};
 	
-	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix, int prixVente, Etat etatVente) {
-		this.noArticle = noArticle;
+	public Article(String nomArticle) {
+		this();
 		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		this.miseAPrix = miseAPrix;
-		this.prixVente = prixVente;
-		this.etatVente = etatVente;
 	}
 	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente) {
+		this(nomArticle);
 		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
+	}
+	
+	
+	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, Etat etatVente) {
+		this(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente);
+		this.etatVente = etatVente;
 	}
 	
 	public int getNoArticle() {

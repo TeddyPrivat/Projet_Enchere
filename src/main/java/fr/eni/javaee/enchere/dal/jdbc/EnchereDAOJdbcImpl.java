@@ -1,6 +1,7 @@
 package fr.eni.javaee.enchere.dal.jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -19,7 +20,6 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
 	private final static String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
-	private final static String SELECT_NAME_LIKE = "SELECT a.nom_article FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article WHERE a.nom_article LIKE '%?%';";
 
 	@Override
 	public List<Enchere> selectAllEncheres() {
@@ -89,6 +89,27 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 			e.printStackTrace();
 		}
 		return encheres;
+	}
+	
+	private final static String SELECT_NAME_LIKE = "SELECT a.nom_article FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article WHERE a.nom_article LIKE %(?)%;";
+
+	@Override
+	public Article selectNomArticleLike(String articleNom) {
+		Article article = null;
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_NAME_LIKE);
+			pstmt.setString(1, articleNom);
+			ResultSet rs = pstmt.executeQuery();
+			
+			articleNom = rs.getString(1);
+			
+			article = new Article(articleNom);	
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
 	}
 	
 }
