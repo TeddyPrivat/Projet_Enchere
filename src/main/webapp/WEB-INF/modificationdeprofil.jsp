@@ -25,32 +25,32 @@ input { display: table-cell; }
 
 	<h3>Mon profil</h3>
 
-	<form method="POST" action=Servletinscription>
+	<form method="POST" action=ServletModificationDeProfil>
 		<table>
 			<tr>
 				<th align="left"><label for="pseudo">Pseudo :</label> <input type="text"
-					name="pseudo" id="pseudo"></th>
+					name="pseudo" id="pseudo" value="${pseudo }"></th>
 				<th><label for="nom">Nom :</label> <input type="text"
-					name="nom" id="nom"></th>
+					name="nom" id="nom" value="${nom }"></th>
 
 			</tr>
 			<tr>
 				<th align="left"><label for="prenom">Prénom :</label> <input type="text"
-					name="prenom" id="prenom"></th>
+					name="prenom" id="prenom" value="${prenom }"></th>
 				<th><label for="email">Email :</label> <input type="email"
-					name="email" id="email"></th>
+					name="email" id="email" value="${email }"></th>
 			</tr>
 			<tr>
 				<th align="left"><label for="telephone">Teléphone :</label> <input
-					type="tel" name="telephone" id="telephone"></th>
+					type="tel" name="telephone" id="telephone" value="${telephone }"></th>
 				<th><label for="rue">Rue :</label> <input type="text"
-					name="rue" id="rue"></th>
+					name="rue" id="rue" value="${rue }"></th>
 			</tr>
 			<tr>
 				<th align="left" ><label for="codePostal">Code postale :</label> <input
-					type="text" name="codePostal" id="codePostal"></th>
+					type="text" name="codePostal" id="codePostal" value="${codePostal }"></th>
 				<th><label for="ville">Ville :</label> <input type="text"
-					name="ville" id="ville"></th>
+					name="ville" id="ville" value="${ville }"></th>
 			</tr>
 			<tr>
 				<th align="left"><label for="motDePasse">Mot de passe actuel :</label> <input
@@ -71,7 +71,7 @@ input { display: table-cell; }
 		</table>
 
 		<div>
-			<a href="">Enregistrer</a>
+			<input type="submit" value="Enregistrer"/>
 		</div>
 		<div>
 			<a href="">Supprimer mon compte</a>
