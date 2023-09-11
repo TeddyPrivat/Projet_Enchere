@@ -19,7 +19,7 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
-	private final static String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
+	private final static String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_vendeur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
 
 	@Override
 	public List<Enchere> selectAllEncheres() {
@@ -47,7 +47,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				int noCategorie = rs.getInt("no_categorie");
 				String libelle = rs.getString("libelle");
 				
-				int noUtilisateur = rs.getInt("no_utilisateur");
+				int noVendeur = rs.getInt("no_utilisateur");
 				String pseudo = rs.getString("pseudo");
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
@@ -77,8 +77,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				Categorie categorie = new Categorie(noCategorie, libelle);
 				article.setCategorie(categorie);
 				enchere.setArticle(article);
-				Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
-				enchere.setUtilisateur(utilisateur);
+				Utilisateur vendeur = new Utilisateur(noVendeur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
+				enchere.setUtilisateur(vendeur);
 				encheres.add(enchere);
 			}
 			
