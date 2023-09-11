@@ -28,7 +28,7 @@ public class ServletModificationDeProfil extends HttpServlet {
 		HttpSession session = request.getSession();
     	int idUser = ((int)session.getAttribute("estConnecte")); // on récupère l'id de l'user par l'attribut de session
     	utilisateur = UtilisateurManager.getInstance().selectInfoUtilisateur(idUser); //on récupère les infos de l'user
-    	System.out.println(utilisateur);
+ 
     	//on récupère les données que nous allons pré-remplir
     	String pseudo = utilisateur.getPseudo();
     	String nom = utilisateur.getNom();
@@ -39,10 +39,8 @@ public class ServletModificationDeProfil extends HttpServlet {
     	String codePostal = utilisateur.getCodePostal();
     	String ville = utilisateur.getVille();
     	String motDePasse = utilisateur.getMotDePasse();
-    	System.out.println(rue);
-    	System.out.println(telephone);
     	
-    	session.setAttribute("pseudo", pseudo);
+    	request.setAttribute("pseudo", pseudo);
     	request.setAttribute("nom", nom);
     	request.setAttribute("prenom", prenom);
     	request.setAttribute("email", email);
