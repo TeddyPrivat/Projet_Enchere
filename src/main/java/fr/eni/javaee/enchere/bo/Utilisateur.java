@@ -69,20 +69,7 @@ public class Utilisateur {
 		this.credit = 100;
 		this.administrateur = 0;
 	}
-	//TEST
-	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
-			String rue,  String ville, String motDePasse) {
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = 100;
-		this.administrateur = 0;
-	}
+	
 	
 	public Utilisateur(String pseudo, String motDePasse) {
 		this.pseudo = pseudo;

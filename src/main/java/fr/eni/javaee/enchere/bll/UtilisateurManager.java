@@ -32,4 +32,8 @@ private static UtilisateurManager instance;
 		return DAOFactory.getUtilisateurDAO().selectInfoUtilisateur(no_utilisateur);
 		
 	}
+	
+	public void updateInfoUtilisateur(int no_utilisateur) {
+		DAOFactory.getUtilisateurDAO().updateInfoUtilisateur(no_utilisateur);
+	}
 }

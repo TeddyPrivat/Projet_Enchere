@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Modification de profil</title>
 <style>
+.incorrect{
+	color:red;
+	
+}
 form{
 	display:table;
 }
@@ -25,26 +30,26 @@ input { display: table-cell; }
 
 	<h3>Mon profil</h3>
 
-	<form method="POST" action=ServletModificationDeProfil>
+	<form method="POST" action=>
 		<table>
 			<tr>
 				<th align="left"><label for="pseudo">Pseudo :</label> <input type="text"
-					name="pseudo" id="pseudo" value="${pseudo }"></th>
+					name="pseudo" id="pseudo" value="${pseudo }" required></th>
 				<th><label for="nom">Nom :</label> <input type="text"
-					name="nom" id="nom" value="${nom }"></th>
+					name="nom" id="nom" value="${nom }" required></th>
 
 			</tr>
 			<tr>
 				<th align="left"><label for="prenom">Prénom :</label> <input type="text"
-					name="prenom" id="prenom" value="${prenom }"></th>
+					name="prenom" id="prenom" value="${prenom }" required></th>
 				<th><label for="email">Email :</label> <input type="email"
-					name="email" id="email" value="${email }"></th>
+					name="email" id="email" value="${email }" required></th>
 			</tr>
 			<tr>
 				<th align="left"><label for="telephone">Teléphone :</label> <input
-					type="tel" name="telephone" id="telephone" value="${telephone }"></th>
+					type="tel" name="telephone" id="telephone" value="${telephone }" required></th>
 				<th><label for="rue">Rue :</label> <input type="text"
-					name="rue" id="rue" value="${rue }"></th>
+					name="rue" id="rue" value="${rue }" required></th>
 			</tr>
 			<tr>
 				<th align="left" ><label for="codePostal">Code postale :</label> <input
@@ -54,22 +59,29 @@ input { display: table-cell; }
 			</tr>
 			<tr>
 				<th align="left"><label for="motDePasse">Mot de passe actuel :</label> <input
-					type="password" name="motDePasse" id="motDePasseActuel"></th>
-				<th></th>
+					type="password" name="motDePasse" id="motDePasseActuel" required></th>
+				<td>
+					<c:if test="${!isMdpCorrect && isMdpCorrect != null}">
+						<p class="incorrect">Mot de passe incorrect</p>
+					</c:if>
+				</td>
+				
 
 			</tr>
 			<tr>
-				<th align="left"><label for="motDePasse">Nouveau Mot de passe :</label> <input
-					type="password" name="motDePasse" id="nouveauMotDePasse">
+				<th align="left"><label for="nouveauMotDePasse">Nouveau Mot de passe :</label> <input
+					type="password" name="nouveauMotDePasse" id="nouveauMotDePasse" required/>
 				</th>
 				<th><label for="confirmationMotDePasse">Confirmation :</label>
 					<input type="password" name="confirmationMotDePasse"
-					id="confirmationMotDePasse">
+					id="confirmationMotDePasse" required/>
 				</th>
 			</tr>
 
 		</table>
-
+		<c:if test="${!isNouveauMotDePasseCorrect && isNouveauMotDePasseCorrect != null}">
+			<p class="incorrect">Nouveau mot de passe et sa confirmation : incorrects</p>
+		</c:if>
 		<div>
 			<input type="submit" value="Enregistrer"/>
 		</div>

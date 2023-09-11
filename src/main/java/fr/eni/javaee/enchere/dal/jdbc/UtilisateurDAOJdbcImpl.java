@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
+import fr.eni.javaee.enchere.bll.DAOFactory;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;
 import fr.eni.javaee.enchere.dal.UtilisateurDAO;
@@ -19,6 +18,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private final static String SELECT_USER_UTILISATEUR = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, credit, mot_de_passe  FROM UTILISATEURS WHERE no_utilisateur =?;";
 
+		
 	@Override
 	public int selectByIdentifiant(String identifiant, String mdp) {
 		int estConnecte = 0;
@@ -98,7 +98,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				int credit = rs.getInt("credit");
 				String motDePasse = rs.getString("mot_de_passe");
 
-				utilisateur = new Utilisateur(noUtilisateur, pseudo,nom, prenom, email, telephone, rue, codePostal, ville, credit, motDePasse );
+				utilisateur = new Utilisateur(noUtilisateur, pseudo,nom, prenom, email, telephone, rue, ville, codePostal, credit, motDePasse );
 
 			}
 
@@ -107,5 +107,33 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		}
 		return utilisateur;
 	}
-
+	
+	private static final String UPDATE_UTILISATEUR = """ 
+			UPDATE UTILISATEURS 
+			SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?,
+			rue = ?, code_postal = ?, ville = ?
+			WHERE no_utilisateur = ?
+			""";
+	
+	public void updateInfoUtilisateur(int no_utilisateur) {
+		Utilisateur utilisateur = DAOFactory.getUtilisateurDAO().selectInfoUtilisateur(no_utilisateur);
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_UTILISATEUR);
+			//il nous faut récupérer les infos du formulaire 
+			
+			pstmt.setString(1, utilisateur.getPseudo());
+			pstmt.setString(2, utilisateur.getNom());
+			pstmt.setString(3, utilisateur.getPseudo());
+			pstmt.setString(4, utilisateur.getEmail());
+			pstmt.setString(5, utilisateur.getTelephone());
+			pstmt.setString(6, utilisateur.getRue());
+			pstmt.setString(7, utilisateur.getCodePostal());
+			pstmt.setString(8, utilisateur.getVille());
+			pstmt.setInt(9, utilisateur.getNoUtilisateur());
+			
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
