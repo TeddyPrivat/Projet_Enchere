@@ -19,6 +19,7 @@ import fr.eni.javaee.enchere.dal.EnchereDAO;
 public class EnchereDAOJdbcImpl implements EnchereDAO{
 	
 	private final static String SELECT_ALL_ENCHERES = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = e.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie;";
+	private final static String SELECT_NAME_LIKE = "SELECT a.nom_article FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON a.no_article = e.no_article WHERE a.nom_article LIKE '%?%';";
 
 	@Override
 	public List<Enchere> selectAllEncheres() {
