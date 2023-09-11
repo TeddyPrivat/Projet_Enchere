@@ -12,11 +12,20 @@ public class Enchere {
 	
 	public Enchere() {};
 	
-	public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere) {
-		this();
-		this.noEnchere = noEnchere;
+	public Enchere(LocalDate dateEnchere, int montantEnchere) {
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
+	}
+	
+	public Enchere(int noEnchere, LocalDate dateEnchere, int montantEnchere) {
+		this(dateEnchere, montantEnchere);
+		this.noEnchere = noEnchere;
+	}
+	
+	public Enchere(LocalDate dateEnchere, int montantEnchere, Utilisateur utilisateur, Article article) {
+		this(dateEnchere, montantEnchere);
+		this.article = article;
+		this.utilisateur = utilisateur;
 	}
 	
 	public void setNoEnchere(int noEnchere) {

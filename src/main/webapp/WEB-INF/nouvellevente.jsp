@@ -48,27 +48,27 @@
 	<input type="number" name="prix" id="prix" min="0" step="5" value="0"/>
 	<br>
 	<br>
-	<label for="debutenchere">Début de l'enchère</label>
-	<input type="date" name="debutenchere" id="debutenchere"/>
+	<label for="debutEnchere">Début de l'enchère</label>
+	<input type="date" name="debutEnchere" id="debutEnchere"/>
 	<br>
 	<br>
-	<label for="finenchere">Fin de l'enchère</label>
-	<input type="date" name="finenchere" id="finenchere"/>
+	<label for="finEnchere">Fin de l'enchère</label>
+	<input type="date" name="finEnchere" id="finEnchere"/>
 	
 	<h3>Retrait</h3>
 	<div class="retrait">
 		<table>
 			<tr>
 				<th align="left"><label for="rue">Rue</label></th>
-				<th><input type="text" name="rue" id="rue"/></th>
+				<th><input type="text" name="rue" id="rue" value="${adresseVendeur.rue }"/></th>
 			</tr>
 			<tr>
 				<th><label for="codePostal">Code postal</label></th>
-				<th><input type="text" name="codePostal" id="codePostal"/></th>
+				<th><input type="text" name="codePostal" id="codePostal" value="${adresseVendeur.codePostal }"/></th>
 			</tr>
 			<tr>
 				<th align="left"><label for="ville">Ville</label></th>
-				<th><input type="text" name="ville" id="ville"/></th>
+				<th><input type="text" name="ville" id="ville" value="${adresseVendeur.ville }"/></th>
 			</tr>
 		</table>
 	</div>
