@@ -2,12 +2,10 @@ package fr.eni.javaee.enchere.servlets;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 
 import java.io.IOException;
 
@@ -50,7 +48,6 @@ public class ServletProfilUtilisateur extends HttpServlet {
 		System.out.println("idSession " + session.getAttribute("estConnecte"));
 
 		request.setAttribute("afficheBouton", afficheBouton);
-		
 		request.setAttribute("utilisateur", utilisateur);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/profilutilisateur.jsp");
 		rd.forward(request, response);

@@ -33,7 +33,7 @@ public class ServletInscription extends HttpServlet {
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 		String motDePasse = request.getParameter("motDePasse");
-		
+		//à faire ici : check si le pseudo ou mail déjà dans la BDD ou non 
 		//on vérifie que le mot de passe est similaire dans les 2 inputs + on vérifie que le pseudo n'est pas déjà utilisé
 		if(request.getParameter("confirmationMotDePasse").equals(request.getParameter("motDePasse"))) {
 			Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse);
