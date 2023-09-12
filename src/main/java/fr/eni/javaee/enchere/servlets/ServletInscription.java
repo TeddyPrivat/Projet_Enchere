@@ -38,8 +38,12 @@ public class ServletInscription extends HttpServlet {
 		if(request.getParameter("confirmationMotDePasse").equals(request.getParameter("motDePasse"))) {
 			Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse);
 			DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
+			rd.forward(request, response);
+		}else {
+			doGet(request, response);
 		}
-		doGet(request, response);
+		
 	}
 
 }

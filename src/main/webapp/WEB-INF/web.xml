@@ -22,7 +22,7 @@
     <servlet-name>accueil</servlet-name>
     <url-pattern>/accueil</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>ServletNouvelleVente</display-name>
     <servlet-name>ServletNouvelleVente</servlet-name>
@@ -74,7 +74,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-
     <display-name>ServletModificationDeProfil</display-name>
     <servlet-name>ServletModificationDeProfil</servlet-name>
     <servlet-class>fr.eni.javaee.enchere.servlets.ServletModificationDeProfil</servlet-class>
@@ -82,6 +81,15 @@
   <servlet-mapping>
     <servlet-name>ServletModificationDeProfil</servlet-name>
     <url-pattern>/ModificationDeProfil</url-pattern>
-
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletSuppressionCompte</display-name>
+    <servlet-name>ServletSuppressionCompte</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletSuppressionCompte</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSuppressionCompte</servlet-name>
+    <url-pattern>/ServletSuppressionCompte</url-pattern>
   </servlet-mapping>
 </web-app>

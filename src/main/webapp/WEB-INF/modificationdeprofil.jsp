@@ -77,6 +77,9 @@ input { display: table-cell; }
 					id="confirmationMotDePasse" required/>
 				</th>
 			</tr>
+			<tr>
+				<th><label for="credit">Crédit ${credit }</label></th>
+			</tr>
 
 		</table>
 		<c:if test="${!isNouveauMotDePasseCorrect && isNouveauMotDePasseCorrect != null}">
@@ -86,7 +89,7 @@ input { display: table-cell; }
 			<input type="submit" value="Enregistrer"/>
 		</div>
 		<div>
-			<a href="">Supprimer mon compte</a>
+			<a href="ServletSuppressionCompte">Supprimer mon compte</a>
 		</div>
 	</form>
 </body>
