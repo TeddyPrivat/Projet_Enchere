@@ -50,6 +50,19 @@
 
 <form method="POST" action=ServletInscription>
 
+<c:if test="${isPseudoUsed }">
+
+         <p class="incorrect">Pseudo déjà utilisé</p>
+
+    </c:if>
+
+
+<c:if test="${isEmailUsed}">
+
+<p class="incorrect">Email déjà utilisé</p>
+
+    </c:if>
+
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" >
