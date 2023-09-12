@@ -34,6 +34,12 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 	}
 	
+	public Utilisateur(int noUtilisateur, String pseudo, int credit) {
+		this(noUtilisateur);
+		this.pseudo = pseudo;
+		this.credit = credit;
+	}
+	
 	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse) {
 		this(pseudo, motDePasse);
@@ -50,8 +56,7 @@ public class Utilisateur {
 	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse,int credit) {
-		this(noUtilisateur);
-		this.pseudo = pseudo;
+		this(noUtilisateur, pseudo, credit);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
@@ -60,7 +65,6 @@ public class Utilisateur {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
-		this.credit = 100;
 		this.administrateur = 0;
 	}
 

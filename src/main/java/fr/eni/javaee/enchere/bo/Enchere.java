@@ -29,10 +29,11 @@ public class Enchere {
 		this.utilisateur = utilisateur;
 	}
 	
-	public Enchere(int noEnchere, int montantEnchere, Utilisateur acheteur) {
+	public Enchere(int noEnchere, int montantEnchere, Utilisateur utilisateur, Utilisateur acheteur) {
 		this();
 		this.noEnchere = noEnchere;
 		this.montantEnchere = montantEnchere;
+		this.utilisateur = utilisateur;
 		this.acheteur = acheteur;
 	}
 	

@@ -80,10 +80,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				Utilisateur vendeur = new Utilisateur(noVendeur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
 				enchere.setUtilisateur(vendeur);
 				encheres.add(enchere);
-				
-				for(Enchere e : encheres) {
-					System.out.println(e);
-				}
+
 			}
 			
 			stmt.close();

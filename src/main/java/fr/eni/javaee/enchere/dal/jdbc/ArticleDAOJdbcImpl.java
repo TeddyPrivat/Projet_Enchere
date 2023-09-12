@@ -95,21 +95,26 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				int noCategorie = rs.getInt("no_categorie");
 				String libelle = rs.getString("libelle");
 				Categorie categorie = new Categorie(noCategorie, libelle);
+				article.setCategorie(categorie);
+
+				int noUtilisateur = rs.getInt("no_utilisateur");
+				String pseudo = rs.getString("pseudo");
+				int credit = rs.getInt("credit");
+				Utilisateur vendeur = new Utilisateur(noUtilisateur, pseudo, credit);
 				
 				int noEnchere = rs.getInt("no_enchere");
 				int montantEnchere = rs.getInt("montant_enchere");
 				int noAcheteur = rs.getInt("no_acheteur");
 				Utilisateur acheteur = new Utilisateur(noAcheteur);
-				Enchere enchere = new Enchere(noEnchere, montantEnchere, acheteur);
-				
-				int noUtilisateur = rs.getInt("no_utilisateur");
-				String pseudo = rs.getString("pseudo");
-				int credit = rs.getInt("credit");
+				Enchere enchere = new Enchere(noEnchere, montantEnchere, vendeur, acheteur);
+				article.setEnchere(enchere);
 				
 				String rue = rs.getString("rue");
 				String codePostal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				Retrait retrait = new Retrait(rue, codePostal, ville);
+				article.setRetrait(retrait);
+				
 			}
 			
 		}catch(SQLException e) {
