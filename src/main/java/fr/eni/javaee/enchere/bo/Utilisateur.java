@@ -12,7 +12,7 @@ public class Utilisateur {
 	private String codePostal;
 	private String ville;
 	private String motDePasse;
-	private int credit;
+	private int credit = 100;
 	private byte administrateur;
 	//private Administrateur administrateur;
 	
@@ -21,76 +21,49 @@ public class Utilisateur {
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse,int credit) {
+	
+	public Utilisateur() {};
+	
+	public Utilisateur(int noUtilisateur) {
+		this();
 		this.noUtilisateur = noUtilisateur;
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = 100;
-		this.administrateur = 0;
 	}
-	
-	
-	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String ville, String codePostal, int credit, String motDePasse) {
-		this.noUtilisateur = noUtilisateur;
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.credit = credit;
-		this.administrateur = 0;
-		this.motDePasse = motDePasse;
-	}
-	
-	
-	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse) {
-		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.motDePasse = motDePasse;
-		this.credit = 100;
-		this.administrateur = 0;
-	}
-	
 	
 	public Utilisateur(String pseudo, String motDePasse) {
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 	}
 	
-	public Utilisateur (String pseudo, String nom, String prenom, String email, String telephone,
-			String rue,  String ville ) {
-		
+	public Utilisateur( String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse) {
+		this(pseudo, motDePasse);
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.credit = 100;
+		this.administrateur = 0;
+	}
+	
+	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String codePostal, String ville, String motDePasse,int credit) {
+		this(noUtilisateur);
 		this.pseudo = pseudo;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
 		this.rue = rue;
+		this.codePostal = codePostal;
 		this.ville = ville;
-		//this.credit = credit;
+		this.motDePasse = motDePasse;
+		this.credit = 100;
 		this.administrateur = 0;
-		
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Utilisateur [noUtilisateur=" + noUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom + ", prenom="

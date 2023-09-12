@@ -21,5 +21,9 @@ public class ArticleManager {
 		int noVendeur = vendeur.getNoUtilisateur();
 		DAOFactory.getArticleDAO().insertArticle(article, noVendeur, retrait);
 	}
+	
+	public Article selectByIdArticle(int noArticle) {
+		return DAOFactory.getArticleDAO().selectByIdArticle(noArticle);
+	}
 
 }

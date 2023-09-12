@@ -40,22 +40,24 @@ public class Article {
 		this.nomArticle = nomArticle;
 	}
 	
+	public Article(String nomArticle, String description, LocalDate dateFinEncheres) {
+		this(nomArticle);
+		this.description = description;
+		this.dateDebutEncheres = dateFinEncheres;
+	}
+	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente) {
-		this(nomArticle);
+		this(nomArticle, description, dateFinEncheres);
 		this.noArticle = noArticle;
-		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 	}
 	
 	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int prixVente, Categorie categorie, Utilisateur utilisateur) {
-		this(nomArticle);
-		this.description = description;
+		this(nomArticle, description, dateFinEncheres);
 		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.categorie = categorie;

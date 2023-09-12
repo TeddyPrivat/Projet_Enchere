@@ -9,6 +9,7 @@ public class Enchere {
 	private int montantEnchere;
 	private Article article;
 	private Utilisateur utilisateur;
+	private Utilisateur acheteur;
 	
 	public Enchere() {};
 	
@@ -26,6 +27,13 @@ public class Enchere {
 		this(dateEnchere, montantEnchere);
 		this.article = article;
 		this.utilisateur = utilisateur;
+	}
+	
+	public Enchere(int noEnchere, int montantEnchere, Utilisateur acheteur) {
+		this();
+		this.noEnchere = noEnchere;
+		this.montantEnchere = montantEnchere;
+		this.acheteur = acheteur;
 	}
 	
 	public void setNoEnchere(int noEnchere) {
@@ -67,11 +75,19 @@ public class Enchere {
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
 	}
+	
+	public void setAcheteur(Utilisateur acheteur) {
+		this.acheteur = acheteur;
+	}
+	
+	public Utilisateur getAcheteur() {
+		return this.acheteur;
+	}
 
 	@Override
 	public String toString() {
 		return "Enchere [noEnchere=" + noEnchere + ", dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere
-				+ ", article=" + article + ", utilisateur=" + utilisateur + "]";
+				+ ", article=" + article + ", utilisateur=" + utilisateur + ", acheteur=" + acheteur + "]";
 	}
 
 }

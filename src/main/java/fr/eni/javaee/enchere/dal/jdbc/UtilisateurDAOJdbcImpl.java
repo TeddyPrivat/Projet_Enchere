@@ -98,7 +98,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				int credit = rs.getInt("credit");
 				String motDePasse = rs.getString("mot_de_passe");
 
-				utilisateur = new Utilisateur(noUtilisateur, pseudo,nom, prenom, email, telephone, rue, ville, codePostal, credit, motDePasse );
+				utilisateur = new Utilisateur(noUtilisateur, pseudo,nom, prenom, email, telephone, rue, ville, codePostal, motDePasse, credit);
 
 			}
 

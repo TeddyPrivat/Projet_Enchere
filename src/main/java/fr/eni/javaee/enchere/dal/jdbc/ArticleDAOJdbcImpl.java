@@ -5,10 +5,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import fr.eni.javaee.enchere.bo.Article;
+import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
 import fr.eni.javaee.enchere.bo.Retrait;
+import fr.eni.javaee.enchere.bo.Utilisateur;
 import fr.eni.javaee.enchere.dal.ArticleDAO;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;
 
@@ -70,6 +73,49 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private final static String SELECT_BY_ID_ARTICLE = "SELECT * FROM ARTICLES AS a INNER JOIN UTILISATEURS AS u ON u.no_utilisateur = a.no_utilisateur INNER JOIN CATEGORIES AS c ON c.no_categorie = a.no_categorie INNER JOIN RETRAITS AS r ON r.no_article = a.no_article INNER JOIN ENCHERES AS e ON e.no_article = a.no_article WHERE a.no_article = ?;";
+
+	@Override
+	public Article selectByIdArticle(int noArticle) {
+		Article article = null;
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_ID_ARTICLE);
+			pstmt.setInt(1, noArticle);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String nomArticle = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDate finEnchere = rs.getDate("date_fin_encheres").toLocalDate();
+				article = new Article(nomArticle, description, finEnchere);
+				
+				int noCategorie = rs.getInt("no_categorie");
+				String libelle = rs.getString("libelle");
+				Categorie categorie = new Categorie(noCategorie, libelle);
+				
+				int noEnchere = rs.getInt("no_enchere");
+				int montantEnchere = rs.getInt("montant_enchere");
+				int noAcheteur = rs.getInt("no_acheteur");
+				Utilisateur acheteur = new Utilisateur(noAcheteur);
+				Enchere enchere = new Enchere(noEnchere, montantEnchere, acheteur);
+				
+				int noUtilisateur = rs.getInt("no_utilisateur");
+				String pseudo = rs.getString("pseudo");
+				int credit = rs.getInt("credit");
+				
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("code_postal");
+				String ville = rs.getString("ville");
+				Retrait retrait = new Retrait(rue, codePostal, ville);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
 	}
 
 }
