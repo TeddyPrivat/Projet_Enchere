@@ -23,6 +23,11 @@
             diplay:block;
             width:100px;
         }
+        
+        .incorrect {
+            color: red;
+        }
+        
     </style>
 </head>
 <body>
@@ -34,11 +39,17 @@
     </div>
     <br>
     
-      <h3>Mon profil</h3>
+    
+    
+    
+    
+     <h3>Mon profil</h3>
+
+	
+
 
 <form method="POST" action=ServletInscription>
-	
-    <div> 
+
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" >
@@ -96,7 +107,12 @@
         <div>
             <a href="accueil">Annuler</a>
         </div>
-    </div>
+        </div>
+        
+    
 </form>
+
+
+
 </body>
 </html>
