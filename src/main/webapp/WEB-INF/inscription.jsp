@@ -93,7 +93,7 @@
     </div>
     <div>
         <div>
-            <input type="submit" value="Créer" name="creerUnCompte">
+            <input type="submit" value="Créer" name="creerUnCompte"/>
         </div>
         <div>
             <a href="accueil">Annuler</a>

@@ -38,6 +38,7 @@ public class ServletModificationDeProfil extends HttpServlet {
     	String codePostal = utilisateur.getCodePostal();
     	String ville = utilisateur.getVille();
     	String motDePasse = utilisateur.getMotDePasse();
+    	int credit = utilisateur.getCredit();
     	
     	request.setAttribute("pseudo", pseudo);
     	request.setAttribute("nom", nom);
@@ -48,6 +49,7 @@ public class ServletModificationDeProfil extends HttpServlet {
     	request.setAttribute("codePostal", codePostal);
     	request.setAttribute("ville", ville);
     	request.setAttribute("motDePasse", motDePasse);
+    	request.setAttribute("credit", credit);
     	
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/modificationdeprofil.jsp");
 		rd.forward(request, response);
