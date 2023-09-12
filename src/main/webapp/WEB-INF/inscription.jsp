@@ -22,11 +22,12 @@
         form label{
             diplay:block;
             width:100px;
-            
-            
-            
-       
         }
+        
+        .incorrect {
+            color: red;
+        }
+        
     </style>
 </head>
 <body>
@@ -38,13 +39,34 @@
     </div>
     <br>
     
-      <h3>Mon profil</h3>
+    
+    
+    
+    
+     <h3>Mon profil</h3>
+
+	
+
 
 <form method="POST" action=ServletInscription>
-    <div>
+
+<c:if test="${isPseudoUsed }">
+
+         <p class="incorrect">Pseudo déjà utilisé</p>
+
+    </c:if>
+
+
+<c:if test="${isEmailUsed}">
+
+<p class="incorrect">Email déjà utilisé</p>
+
+    </c:if>
+
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" >
+           
         </div>
         <div>
             <label for="name">Nom :</label>
@@ -98,7 +120,12 @@
         <div>
             <a href="accueil">Annuler</a>
         </div>
-    </div>
+        </div>
+        
+    
 </form>
+
+
+
 </body>
 </html>

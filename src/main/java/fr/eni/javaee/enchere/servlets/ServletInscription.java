@@ -33,14 +33,19 @@ public class ServletInscription extends HttpServlet {
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 		String motDePasse = request.getParameter("motDePasse");
-		//à faire ici : check si le pseudo ou mail déjà dans la BDD ou non 
-		//on vérifie que le mot de passe est similaire dans les 2 inputs + on vérifie que le pseudo n'est pas déjà utilisé
-		if(request.getParameter("confirmationMotDePasse").equals(request.getParameter("motDePasse"))) {
+		//check si le pseudo ou mail sont déjà dans la BDD ou non 
+		boolean isPseudoUsed = DAOFactory.getUtilisateurDAO().checkIfPseudoIsUsed(pseudo);
+		boolean isEmailUsed = DAOFactory.getUtilisateurDAO().checkIfEmailIsUsed(email);
+		
+		//on vérifie que le mot de passe est similaire dans les 2 inputs + on vérifie que le pseudo ou l'email ne sont pas déjà utilisés
+		if(request.getParameter("confirmationMotDePasse").equals(request.getParameter("motDePasse")) && !isPseudoUsed && !isEmailUsed) {
 			Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse);
 			DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");	//si on peut créer le compte alors on le dirige vers la page de connexion
 			rd.forward(request, response);
 		}else {
+			request.setAttribute("isPseudoUsed", isPseudoUsed);
+			request.setAttribute("isEmailUsed", isEmailUsed);
 			doGet(request, response);
 		}
 		

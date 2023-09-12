@@ -136,4 +136,38 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	private static final String SELECT_IF_PSEUDO_EXISTS =  "SELECT no_utilisateur FROM UTILISATEURS WHERE pseudo=?; ";
+	
+	public boolean checkIfPseudoIsUsed(String pseudo) {
+		boolean isPseudoUsed = false;
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_IF_PSEUDO_EXISTS);
+			pstmt.setString(1, pseudo);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isPseudoUsed = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return isPseudoUsed;
+	}
+	
+private static final String SELECT_IF_EMAIL_EXISTS =  "SELECT no_utilisateur FROM UTILISATEURS WHERE email=?; ";
+	
+	public boolean checkIfEmailIsUsed(String email) {
+		boolean isEmailUsed = false;
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_IF_EMAIL_EXISTS);
+			pstmt.setString(1, email);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isEmailUsed = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return isEmailUsed;
+	}
 }

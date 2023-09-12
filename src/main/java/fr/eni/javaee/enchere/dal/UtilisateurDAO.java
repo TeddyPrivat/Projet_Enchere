@@ -13,4 +13,8 @@ public interface UtilisateurDAO {
 	public Utilisateur selectInfoUtilisateur(int no_utilisateur);
 	
 	public void updateInfoUtilisateur(int no_utilisateur);
+	
+	public boolean checkIfPseudoIsUsed(String pseudo);
+	
+	public boolean checkIfEmailIsUsed(String email);
 }
