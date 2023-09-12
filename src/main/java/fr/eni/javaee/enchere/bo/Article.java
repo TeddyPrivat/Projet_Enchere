@@ -2,8 +2,6 @@ package fr.eni.javaee.enchere.bo;
 
 import java.time.LocalDate;
 
-import fr.eni.javaee.enchere.bll.RetraitManager;
-
 public class Article {
 
 	private int noArticle;
