@@ -38,24 +38,5 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 		}
 		return retrait;
 	}
-	private final static String INSERT_RETRAIT = "INSERT INTO RETRAITS(no_article, rue, code_postal, ville) VALUES (?, ?, ?, ?);";
-
-	@Override
-	public void insertRetrait(int noArticle, Retrait retrait) {
-		
-		try(Connection cnx = ConnectionProvider.getConnection()){
-			PreparedStatement pstmt = cnx.prepareStatement(INSERT_RETRAIT);
-			pstmt.setInt(1, noArticle);
-			pstmt.setString(2, retrait.getRue());
-			pstmt.setString(3, retrait.getCodePostal());
-			pstmt.setString(4, retrait.getVille());
-			pstmt.executeUpdate();
-			
-			pstmt.close();
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 }
