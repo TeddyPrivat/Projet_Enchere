@@ -40,25 +40,24 @@ public class Article {
 		this.nomArticle = nomArticle;
 	}
 	
-	public Article(String nomArticle, String description, LocalDate dateFinEncheres) {
+	public Article(String nomArticle, String description, LocalDate dateFinEncheres, int miseAPrix) {
 		this(nomArticle);
 		this.description = description;
-		this.dateDebutEncheres = dateFinEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
 	}
 	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente) {
-		this(nomArticle, description, dateFinEncheres);
+		this(nomArticle, description, dateFinEncheres, miseAPrix);
 		this.noArticle = noArticle;
 		this.dateDebutEncheres = dateDebutEncheres;
-		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 	}
 	
 	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int prixVente, Categorie categorie, Utilisateur utilisateur) {
-		this(nomArticle, description, dateFinEncheres);
+		this(nomArticle, description, dateFinEncheres, miseAPrix);
 		this.dateDebutEncheres = dateDebutEncheres;
-		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.categorie = categorie;
 		this.utilisateur = utilisateur;
@@ -150,7 +149,7 @@ public class Article {
 	public String toString() {
 		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente.getEtat() + "]";
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
 	}
 
 }

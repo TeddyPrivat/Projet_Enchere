@@ -29,6 +29,7 @@ public class ServletAccueil extends HttpServlet {
 		
 		encheres = EnchereManager.getInstance().selectAllEncheres();
 		this.getServletContext().setAttribute("encheres", encheres);
+		
 	}
 
 

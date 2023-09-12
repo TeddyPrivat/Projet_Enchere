@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import fr.eni.javaee.enchere.bll.ArticleManager;
+import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
@@ -90,7 +92,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				String nomArticle = rs.getString("nom_article");
 				String description = rs.getString("description");
 				LocalDate finEnchere = rs.getDate("date_fin_encheres").toLocalDate();
-				article = new Article(nomArticle, description, finEnchere);
+				int prixInitial = rs.getInt("prix_initial");
+				article = new Article(nomArticle, description, finEnchere, prixInitial);
 				
 				int noCategorie = rs.getInt("no_categorie");
 				String libelle = rs.getString("libelle");
@@ -101,11 +104,13 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				String pseudo = rs.getString("pseudo");
 				int credit = rs.getInt("credit");
 				Utilisateur vendeur = new Utilisateur(noUtilisateur, pseudo, credit);
+				article.setUtilisateur(vendeur);
 				
 				int noEnchere = rs.getInt("no_enchere");
 				int montantEnchere = rs.getInt("montant_enchere");
 				int noAcheteur = rs.getInt("no_acheteur");
 				Utilisateur acheteur = new Utilisateur(noAcheteur);
+				acheteur = UtilisateurManager.getInstance().selectInfoUtilisateur(noAcheteur);
 				Enchere enchere = new Enchere(noEnchere, montantEnchere, vendeur, acheteur);
 				article.setEnchere(enchere);
 				
@@ -121,6 +126,29 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			e.printStackTrace();
 		}
 		return article;
+	}
+	
+	private final static String UPDATE_ENCHERES = "UPDATE ENCHERES SET montant_enchere = ?, no_acheteur = ? WHERE no_enchere = ?;";
+	private final static String UPDATE_ARTICLES = "UPDATE ARTICLES SET prix_vente = ? WHERE no_article = ?;";
+
+	@Override
+	public void faireEnchere(int noArticle) {
+
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			Article article = ArticleManager.getInstance().selectByIdArticle(noArticle);
+			int noEnchere = article.getEnchere().getNoEnchere();
+			
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLES);
+			pstmt.setInt(1, article.getPrixVente());
+			pstmt.executeUpdate();
+			
+			pstmt = cnx.prepareStatement(UPDATE_ENCHERES);
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

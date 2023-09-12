@@ -10,5 +10,7 @@ public interface EnchereDAO {
 	public List<Enchere> selectAllEncheres();
 	
 	public Article selectNomArticleLike(String articleNom);
+	
+	public Enchere selectEncherebyId(int noEnchere);
 
 }

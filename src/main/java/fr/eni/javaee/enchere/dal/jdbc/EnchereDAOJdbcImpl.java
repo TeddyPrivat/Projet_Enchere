@@ -76,6 +76,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				
 				Categorie categorie = new Categorie(noCategorie, libelle);
 				article.setCategorie(categorie);
+				System.out.println("Article du select" + article);
 				enchere.setArticle(article);
 				Utilisateur vendeur = new Utilisateur(noVendeur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
 				enchere.setUtilisateur(vendeur);
@@ -112,4 +113,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 		}
 		return article;
 	}
+
+	@Override
+	public Enchere selectEncherebyId(int noEnchere) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

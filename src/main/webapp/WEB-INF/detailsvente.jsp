@@ -24,32 +24,33 @@
 		</tr>
 		<tr>
 			<td>Meilleure offre</td>
-			<td>${articleEnVente.enchere.montantEnchere }</td>
+			<td>${articleEnVente.enchere.montantEnchere } pts par ${articleEnVente.enchere.acheteur.pseudo }</td>
+		</tr>
+		<tr>
+			<td>Mise à prix</td>
+			<td>${articleEnVente.miseAPrix }</td>
 		</tr>
 		<tr>
 			<td>Fin de l'enchère</td>
-			<td>${articleEnVente.finEnchere }</td>
+			<td>${articleEnVente.dateFinEncheres}</td>
 		</tr>
 		<tr>
 			<td>Retrait</td>
-			<td>${articleEnVente.retrait.rue }
-				<br>
-				${articleEnVente.retrait.codePostal }
-			</td>
+			<td>${articleEnVente.retrait.rue }</td>
 		</tr>
 		<tr>
 			<td></td>
-			<td>CODE POSTAL </td>
+			<td>${articleEnVente.retrait.codePostal } ${articleEnVente.retrait.ville }</td>
 		</tr>
 		<tr>
 			<td>Vendeur</td>
-			<td>NOM DU VENDEUR</td>
+			<td>${articleEnVente.utilisateur.pseudo }</td>
 		</tr>
-		<c:if test="${boutonEncherir">
+		<c:if test="${boutonEncherir}">
 			<form method="post" action="ServletDetailsVente">
 				<tr>
 					<td><label for="proposition">Ma proposition </label></td>
-					<td><input type="number" name="proposition" id="proposition" value="100" step="5" min="0"/>
+					<td><input type="number" name="proposition" id="proposition" value="${articleEnVente.enchere.montantEnchere }" step="5" min="0"/>
 					<td><input type="submit" value="Enchérir"/></td>
 				</tr>
 			</form>

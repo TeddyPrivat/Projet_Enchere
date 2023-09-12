@@ -23,11 +23,9 @@ public class ServletDetailsVente extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		int noVendeur = (int) session.getAttribute("estConnecte");
-		System.out.println("Id vendeur :" + noVendeur);
+
 		if(request.getParameter("noArticle") != null) {
-			System.out.println("Je suis un paramètre non null");
 			int noArticleEnVente = Integer.valueOf(request.getParameter("noArticle"));
-			System.out.println("Je suis l'id de l'article : " + noArticleEnVente);
 			articleEnVente =  ArticleManager.getInstance().selectByIdArticle(noArticleEnVente);
 			
 			if(articleEnVente.getUtilisateur().getNoUtilisateur() != noVendeur) {

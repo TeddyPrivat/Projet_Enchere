@@ -25,5 +25,9 @@ public class ArticleManager {
 	public Article selectByIdArticle(int noArticle) {
 		return DAOFactory.getArticleDAO().selectByIdArticle(noArticle);
 	}
+	
+	public void faireEnchere(int noArticle) {
+		DAOFactory.getArticleDAO().faireEnchere(noArticle);
+	}
 
 }
