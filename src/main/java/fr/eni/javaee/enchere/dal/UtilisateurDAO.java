@@ -12,7 +12,8 @@ public interface UtilisateurDAO {
 	
 	public Utilisateur selectInfoUtilisateur(int no_utilisateur);
 	
-	public void updateInfoUtilisateur(int no_utilisateur);
+	public void updateInfoUtilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email,String telephone, String rue,
+			String codePostal, String ville);
 	
 	public boolean checkIfPseudoIsUsed(String pseudo);
 	

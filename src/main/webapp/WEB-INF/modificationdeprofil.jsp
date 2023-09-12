@@ -28,9 +28,19 @@ input { display: table-cell; }
 	</div>
 	<br>
 
-	<h3>Mon profil</h3>
+<div align = "center"> 
 
-	<form method="POST" action=>
+	<h3>Mon profil</h3>
+	<form method="POST" action="ModificationDeProfil">
+	
+	
+	<c:if test="${emailIsInBDD }">
+		<p class="incorrect">Cet email est déjà paris</p>
+	</c:if>	
+	
+	<c:if test="${pseudoIsInBDD }">
+		<p class="incorrect">Ce pseudo est déjà pris</p>
+	</c:if>
 		<table>
 			<tr>
 				<th align="left"><label for="pseudo">Pseudo :</label> <input type="text"
@@ -53,9 +63,12 @@ input { display: table-cell; }
 			</tr>
 			<tr>
 				<th align="left" ><label for="codePostal">Code postale :</label> <input
-					type="text" name="codePostal" id="codePostal" value="${codePostal }"></th>
+					type="text" name="codePostal" id="codePostal" value="${codePostal }">
+					
+				</th>
 				<th><label for="ville">Ville :</label> <input type="text"
-					name="ville" id="ville" value="${ville }"></th>
+					name="ville" id="ville" value="${ville }">
+				</th>
 			</tr>
 			<tr>
 				<th align="left"><label for="motDePasse">Mot de passe actuel :</label> <input
@@ -92,5 +105,6 @@ input { display: table-cell; }
 			<a href="ServletSuppressionCompte">Supprimer mon compte</a>
 		</div>
 	</form>
+	</div>
 </body>
 </html>
