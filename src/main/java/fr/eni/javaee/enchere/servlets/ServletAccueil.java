@@ -5,8 +5,6 @@ import java.util.List;
 
 import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
-import fr.eni.javaee.enchere.bo.Article;
-import fr.eni.javaee.enchere.bo.Article.Etat;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
 

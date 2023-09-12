@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import fr.eni.javaee.enchere.bll.DAOFactory;
 import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 import fr.eni.javaee.enchere.dal.ConnectionProvider;

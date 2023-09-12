@@ -18,10 +18,5 @@ public class RetraitManager {
 	public Retrait selectById(int noArticle) {
 		return DAOFactory.getRetraitDAO().selectById(noArticle);
 	}
-	
-	public void insertRetrait(int noArticle, String rue, String codePostal, String ville) {
-		Retrait retrait = new Retrait(rue, codePostal, ville);
-		DAOFactory.getRetraitDAO().insertRetrait(noArticle, retrait);
-	}
 
 }
