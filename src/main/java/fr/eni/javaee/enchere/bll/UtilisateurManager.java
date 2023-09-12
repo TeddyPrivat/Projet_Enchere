@@ -33,8 +33,9 @@ private static UtilisateurManager instance;
 		
 	}
 	
-	public void updateInfoUtilisateur(int no_utilisateur) {
-		DAOFactory.getUtilisateurDAO().updateInfoUtilisateur(no_utilisateur);
+	public void updateInfoUtilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email,String telephone, 
+			String rue,	String codePostal, String ville) {
+		DAOFactory.getUtilisateurDAO().updateInfoUtilisateur(no_utilisateur,pseudo,nom,prenom,email,telephone,rue,codePostal,ville);
 	}
 	
 	public boolean checkIfPseudoIsUsed(String pseudo) {

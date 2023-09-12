@@ -55,9 +55,12 @@ input { display: table-cell; }
 			</tr>
 			<tr>
 				<th align="left" ><label for="codePostal">Code postale :</label> <input
-					type="text" name="codePostal" id="codePostal" value="${codePostal }"></th>
+					type="text" name="codePostal" id="codePostal" value="${codePostal }">
+					
+				</th>
 				<th><label for="ville">Ville :</label> <input type="text"
-					name="ville" id="ville" value="${ville }"></th>
+					name="ville" id="ville" value="${ville }">
+				</th>
 			</tr>
 			<tr>
 				<th align="left"><label for="motDePasse">Mot de passe actuel :</label> <input

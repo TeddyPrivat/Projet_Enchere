@@ -9,13 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
+import fr.eni.javaee.enchere.bll.DAOFactory;
 import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Utilisateur;
-import fr.eni.javaee.enchere.dal.ConnectionProvider;
 
 public class ServletModificationDeProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -75,40 +72,18 @@ public class ServletModificationDeProfil extends HttpServlet {
 				}else if(!nouveauMotDePasse.equals(motDePasseConfirmation)) {	//comparaison du nouveau mdp et de sa confirmation  
 					isNouveauMotDePasseCorrect = false;
 				}
-				//DAOFactory.getUtilisateurDAO().updateInfoUtilisateur(idUser);
-				//tentative sale de mettre en place l'update direct dans la servlet
-				 String UPDATE_UTILISATEUR = """ 
-						UPDATE UTILISATEURS 
-						SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?,
-						rue = ?, code_postal = ?, ville = ?
-						WHERE no_utilisateur = ?
-						""";
-				try(Connection cnx = ConnectionProvider.getConnection()){
-					PreparedStatement pstmt = cnx.prepareStatement(UPDATE_UTILISATEUR);
-					//il nous faut récupérer les infos du formulaire 
-					String pseudoSaisi = request.getParameter("pseudo");
-					String nomSaisi = request.getParameter("nom");
-					String prenomSaisi = request.getParameter("prenom");
-					String emailSaisi = request.getParameter("email");
-					String telephoneSaisi = request.getParameter("telephone");
-					String rueSaisi = request.getParameter("rue");
-					String codePostalSaisi = request.getParameter("codePostal");
-					String villeSaisi = request.getParameter("ville");
-
-					pstmt.setString(1, pseudoSaisi);
-					pstmt.setString(2, nomSaisi);
-					pstmt.setString(3, prenomSaisi);
-					pstmt.setString(4, emailSaisi);
-					pstmt.setString(5, telephoneSaisi);
-					pstmt.setString(6, rueSaisi);
-					pstmt.setString(7, codePostalSaisi);
-					pstmt.setString(8, villeSaisi);
-					pstmt.setInt(9, utilisateur.getNoUtilisateur());
-
-					pstmt.executeUpdate();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
+				//VERSION BELLE 
+				String pseudoSaisi = request.getParameter("pseudo");
+				String nomSaisi = request.getParameter("nom");
+				String prenomSaisi = request.getParameter("prenom");
+				String emailSaisi = request.getParameter("email");
+				String telephoneSaisi = request.getParameter("telephone");
+				String rueSaisi = request.getParameter("rue");
+				String codePostalSaisi = request.getParameter("codePostal");
+				String villeSaisi = request.getParameter("ville");
+				
+				DAOFactory.getUtilisateurDAO().updateInfoUtilisateur(idUser, pseudoSaisi, nomSaisi, prenomSaisi, emailSaisi, telephoneSaisi, rueSaisi, codePostalSaisi, villeSaisi);
+				
 				request.setAttribute("isNouveauMotDePasseCorrect", isNouveauMotDePasseCorrect);	//on envoie les booléens pour qu'ils soient traités
 				request.setAttribute("isMdpCorrect", isMdpCorrect);								//dans la JSP
 
