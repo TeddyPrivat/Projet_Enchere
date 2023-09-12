@@ -31,8 +31,16 @@ input { display: table-cell; }
 <div align = "center"> 
 
 	<h3>Mon profil</h3>
-
-	<form method="POST" action=>
+	<form method="POST" action="ModificationDeProfil">
+	
+	
+	<c:if test="${emailIsInBDD }">
+		<p class="incorrect">Cet email est déjà paris</p>
+	</c:if>	
+	
+	<c:if test="${pseudoIsInBDD }">
+		<p class="incorrect">Ce pseudo est déjà pris</p>
+	</c:if>
 		<table>
 			<tr>
 				<th align="left"><label for="pseudo">Pseudo :</label> <input type="text"
