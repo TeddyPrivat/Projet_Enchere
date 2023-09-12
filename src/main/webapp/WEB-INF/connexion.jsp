@@ -19,6 +19,8 @@
 			alt="logo qui renvoie à l'accueil" /></a>
 	</div>
 
+
+<div align = "center"> 
 	<br>
 	<form method="post" action="ServletConnexion">
 		<div>
@@ -34,6 +36,7 @@
 			<p class="infoConnexion">Mot de passe ou identifiant incorrect</p>
 		</c:if>
 
+ <br>
 		<input type="submit" value="Connexion" />
 	</form>
 	<br>
@@ -48,7 +51,7 @@
 	<br>
 	<a href="ServletInscription">Créer un compte</a>
 	<br>
-
+</div>
 
 
 </body>

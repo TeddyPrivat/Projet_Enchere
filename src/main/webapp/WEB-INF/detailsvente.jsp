@@ -9,6 +9,8 @@
 <body>
 <a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil"/></a>
 
+
+
 <h2>Détails vente</h2>
 <form method="post" action="">
 <table>
@@ -53,5 +55,6 @@
 	
 </table>
 </form>
+
 </body>
 </html>
