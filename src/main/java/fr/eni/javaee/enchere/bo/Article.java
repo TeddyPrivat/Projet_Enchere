@@ -53,12 +53,13 @@ public class Article {
 		this.prixVente = prixVente;
 	}
 	
-	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, Categorie categorie, Utilisateur utilisateur) {
+	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int prixVente, Categorie categorie, Utilisateur utilisateur) {
 		this(nomArticle);
 		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
 		this.categorie = categorie;
 		this.utilisateur = utilisateur;
 	}

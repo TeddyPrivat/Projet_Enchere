@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import fr.eni.javaee.enchere.bll.ArticleManager;
 import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bll.RetraitManager;
@@ -62,6 +63,8 @@ public class ServletNouvelleVente extends HttpServlet {
 		System.out.println("Numéro de la catégorie : " + noCategorie);
 		int miseAPrix = Integer.valueOf(request.getParameter("prix"));
 		System.out.println("Prix : " + miseAPrix);
+		int prixVente = Integer.valueOf(request.getParameter("prix"));
+		System.out.println("Prix de vente : " + prixVente);
 		LocalDate dateDebutEnchere = LocalDate.parse(request.getParameter("debutEnchere"));
 		System.out.println("Début des enchères : " + dateDebutEnchere);
 		LocalDate dateFinEnchere = LocalDate.parse(request.getParameter("finEnchere"));
@@ -81,9 +84,9 @@ public class ServletNouvelleVente extends HttpServlet {
 		}
 		
 		Utilisateur vendeur = UtilisateurManager.getInstance().selectInfoUtilisateur(noVendeur);
-		Article nouveauArticle = new Article(nomArticle, description, dateDebutEnchere, dateFinEnchere, miseAPrix, categorie, vendeur);
+		Article nouveauArticle = new Article(nomArticle, description, dateDebutEnchere, dateFinEnchere, miseAPrix, prixVente, categorie, vendeur);
 		Retrait retrait = new Retrait(rue, codePostal, ville);
-		EnchereManager.getInstance().insertArticle(nouveauArticle, vendeur, retrait);
+		ArticleManager.getInstance().insertArticle(nouveauArticle, vendeur, retrait);
 		
 		request.setAttribute("nouveauArticle", nouveauArticle);
 		
