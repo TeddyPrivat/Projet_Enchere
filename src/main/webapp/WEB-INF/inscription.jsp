@@ -22,10 +22,6 @@
         form label{
             diplay:block;
             width:100px;
-            
-            
-            
-       
         }
     </style>
 </head>
@@ -41,10 +37,12 @@
       <h3>Mon profil</h3>
 
 <form method="POST" action=ServletInscription>
-    <div>
+	
+    <div> 
         <div>
             <label for="pseudo">Pseudo :</label>
             <input type="text" name="pseudo" id="pseudo" >
+           
         </div>
         <div>
             <label for="name">Nom :</label>
