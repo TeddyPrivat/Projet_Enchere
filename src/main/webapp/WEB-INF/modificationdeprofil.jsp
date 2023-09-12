@@ -28,6 +28,8 @@ input { display: table-cell; }
 	</div>
 	<br>
 
+<div align = "center"> 
+
 	<h3>Mon profil</h3>
 
 	<form method="POST" action=>
@@ -92,5 +94,6 @@ input { display: table-cell; }
 			<a href="ServletSuppressionCompte">Supprimer mon compte</a>
 		</div>
 	</form>
+	</div>
 </body>
 </html>
