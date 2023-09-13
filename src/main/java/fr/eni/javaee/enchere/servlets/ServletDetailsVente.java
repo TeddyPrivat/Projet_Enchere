@@ -57,15 +57,15 @@ public class ServletDetailsVente extends HttpServlet {
 		
 		int proposition = Integer.valueOf(request.getParameter("proposition"));
 		articleEnVente.setPrixVente(proposition);
-		System.out.println("J'ai fini de récupérer les infos de maj de l'article");
+
 		int noEnchere = articleEnVente.getEnchere().getNoEnchere();
 		enchere = EnchereManager.getInstance().selectEncherebyId(noEnchere);
 		enchere.setMontantEnchere(proposition);
 		enchere.setAcheteur(acheteur);
-		System.out.println("J'ai récupéré les infos de maj de l'enchère");
+
 		articleEnVente.setEnchere(enchere);
 		DAOFactory.getArticleDAO().faireEnchere(articleEnVente);
-		System.out.println("J'ai invoqué ma méthode enchère");
+
 		doGet(request, response);
 	}
 

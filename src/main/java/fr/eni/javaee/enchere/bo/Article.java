@@ -40,8 +40,9 @@ public class Article {
 		this.nomArticle = nomArticle;
 	}
 	
-	public Article(String nomArticle, String description, LocalDate dateFinEncheres, int miseAPrix) {
+	public Article(int noArticle, String nomArticle, String description, LocalDate dateFinEncheres, int miseAPrix) {
 		this(nomArticle);
+		this.noArticle = noArticle;
 		this.description = description;
 		this.dateFinEncheres = dateFinEncheres;
 		this.miseAPrix = miseAPrix;
@@ -49,15 +50,17 @@ public class Article {
 	
 	public Article(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente) {
-		this(nomArticle, description, dateFinEncheres, miseAPrix);
-		this.noArticle = noArticle;
+		this(noArticle, nomArticle, description, dateFinEncheres, miseAPrix);
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.prixVente = prixVente;
 	}
 	
 	public Article(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int prixVente, Categorie categorie, Utilisateur utilisateur) {
-		this(nomArticle, description, dateFinEncheres, miseAPrix);
+		this(nomArticle);
+		this.description = description;
 		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
 		this.prixVente = prixVente;
 		this.categorie = categorie;
 		this.utilisateur = utilisateur;
