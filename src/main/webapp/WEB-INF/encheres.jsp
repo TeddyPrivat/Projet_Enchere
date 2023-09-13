@@ -11,6 +11,7 @@
 	width:230px;
 	display:block;
 	padding-left : 20px;
+	margin-left : 30px;
 }
 .ToutesLesEncheres{
 	display:flex;
@@ -38,7 +39,7 @@
 			<p>Mise à prix : ${encheres.article.prixVente } </p>
 			<p>Prix de vente : ${encheres.article.prixVente }</p>
 			<c:if test="${encheres.article.etatVente == 'En vente'}">
-				<a href="DetailsVente">Coucou</a>
+				<a href="NouvelleVente?noArticle=${encheres.article.noArticle }">Coucou</a>
 			</c:if>
 		</c:if>
 	</div>
