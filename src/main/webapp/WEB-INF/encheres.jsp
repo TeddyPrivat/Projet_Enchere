@@ -32,17 +32,20 @@
 	
 	<div class="ToutesLesEncheres">
 	<c:forEach items="${listeEncheres }" var="encheres">
+	<c:choose>
 	
-	<div class="uneEnchere">
-		<c:if test="${encheres.utilisateur.noUtilisateur == estConnecte }">
-			<p>Description : ${encheres.article.nomArticle }</p>
+		<c:when test="${encheres.utilisateur.noUtilisateur == estConnecte }">
+		<div class="uneEnchere">
+			<p>Article : ${encheres.article.nomArticle }</p>
 			<p>Mise à prix : ${encheres.article.prixVente } </p>
 			<p>Prix de vente : ${encheres.article.prixVente }</p>
 			<c:if test="${encheres.article.etatVente == 'En vente'}">
 				<a href="NouvelleVente?noArticle=${encheres.article.noArticle }">Coucou</a>
 			</c:if>
-		</c:if>
-	</div>
+			</div>
+		</c:when>
+		<c:otherwise><p></p></c:otherwise>
+	</c:choose>
 	</c:forEach>
 	</div>
 

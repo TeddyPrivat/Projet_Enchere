@@ -1,6 +1,9 @@
 package fr.eni.javaee.enchere.bo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Article {
 

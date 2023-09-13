@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.javaee.enchere.bll.DAOFactory;
 import fr.eni.javaee.enchere.bo.Enchere;
 

@@ -197,7 +197,7 @@
 						</c:choose>
 					</c:when>
 					<c:otherwise>
-						:)
+						
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
