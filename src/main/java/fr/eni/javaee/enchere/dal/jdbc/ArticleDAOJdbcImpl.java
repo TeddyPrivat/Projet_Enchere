@@ -116,6 +116,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				acheteur = UtilisateurManager.getInstance().selectInfoUtilisateur(noAcheteur);
 				Enchere enchere = new Enchere(noEnchere, montantEnchere, vendeur, acheteur);
 				article.setEnchere(enchere);
+				System.out.println("Je suis l'enchère du SelectBy:" + enchere);
 				
 				String rue = rs.getString("rue");
 				String codePostal = rs.getString("code_postal");
@@ -135,27 +136,28 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	private final static String UPDATE_ENCHERES = "UPDATE ENCHERES SET montant_enchere = ?, no_acheteur = ? WHERE no_enchere = ?;";
 
 	@Override
-	public void faireEnchere(int noArticle) {
+	public void faireEnchere(Article article) {
 		List<Enchere> encherisseurs = new ArrayList<>();
 
 		try(Connection cnx = ConnectionProvider.getConnection()){
-			Article article = ArticleManager.getInstance().selectByIdArticle(noArticle);
-			int noEnchere = article.getEnchere().getNoEnchere();
-			Enchere enchere = EnchereManager.getInstance().selectEncherebyId(noEnchere);
-			
+			int noArticle = article.getNoArticle();
+
+			Enchere enchere = ArticleManager.getInstance().selectByIdArticle(noArticle).getEnchere();
+			System.out.println("Je suis l'enchère du faireEnchere" + enchere);
+			System.out.println("Je suis avant l'update article");
 			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLES);
 			pstmt.setInt(1, article.getPrixVente());
 			pstmt.setInt(2, noArticle);
 			pstmt.executeUpdate();
-			
-			pstmt = cnx.prepareStatement(UPDATE_ENCHERES);
-			pstmt.setInt(1, enchere.getMontantEnchere());
-			pstmt.setInt(2, enchere.getAcheteur().getNoUtilisateur());
-			pstmt.setInt(3, noEnchere);
-			pstmt.executeUpdate();
-			
+			System.out.println("Je vais mettre l'article dans l'enchère");
 			enchere.setArticle(article);
-			
+			System.out.println("Je suis avant l'update enchère");
+			pstmt = cnx.prepareStatement(UPDATE_ENCHERES);
+			pstmt.setInt(1, enchere.getArticle().getPrixVente());
+			pstmt.setInt(2, enchere.getAcheteur().getNoUtilisateur());
+			pstmt.setInt(3, enchere.getNoEnchere());
+			pstmt.executeUpdate();
+			System.out.println("J'ai fini l'update enchère");
 			encherisseurs.add(enchere);
 			
 		}catch(SQLException e) {

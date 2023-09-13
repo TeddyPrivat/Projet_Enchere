@@ -76,6 +76,7 @@
 	<br>
 	<input type="submit" value="Enregistrer"/>
 	<input type="reset" value="Annuler"/>
+	<a href="">Modifier</a>
 	<a href="">Annuler la vente</a>
 	
 	</form>
