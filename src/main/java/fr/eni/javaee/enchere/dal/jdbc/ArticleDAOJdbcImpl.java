@@ -134,10 +134,10 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	
 	private final static String UPDATE_ARTICLES = "UPDATE ARTICLES SET prix_vente = ? WHERE no_article = ?;";
 	private final static String UPDATE_ENCHERES = "UPDATE ENCHERES SET montant_enchere = ?, no_acheteur = ? WHERE no_enchere = ?;";
+	private final static String UPDATE_CREDIT_UTILISATEUR = "UPDATE UTILISATEURS SET credit = ? WHERE no_utilisateur = ?;";
 
 	@Override
 	public void faireEnchere(Article article) {
-		List<Enchere> encherisseurs = new ArrayList<>();
 
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			int noArticle = article.getNoArticle();
@@ -152,11 +152,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 
 			pstmt = cnx.prepareStatement(UPDATE_ENCHERES);
 			pstmt.setInt(1, enchere.getArticle().getPrixVente());
-			pstmt.setInt(2, enchere.getAcheteur().getNoUtilisateur());
+			pstmt.setInt(2, article.getEnchere().getAcheteur().getNoUtilisateur());
 			pstmt.setInt(3, enchere.getNoEnchere());
 			pstmt.executeUpdate();
-
-			encherisseurs.add(enchere);
+			
+			pstmt = cnx.prepareStatement(UPDATE_CREDIT_UTILISATEUR);
+			pstmt.setInt(1, article.getEnchere().getAcheteur().getCredit());
+			pstmt.setInt(2, article.getEnchere().getAcheteur().getNoUtilisateur());
+			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

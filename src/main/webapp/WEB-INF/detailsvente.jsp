@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>Meilleure offre</td>
-			<td>${articleEnVente.enchere.montantEnchere } pts <c:if test="${articleEnVente.enchere.acheteur != null }">par ${articleEnVente.enchere.acheteur.pseudo }</c:if></td>
+			<td>${articleEnVente.enchere.montantEnchere } pts par ${articleEnVente.enchere.acheteur.pseudo }</td>
 		</tr>
 		<tr>
 			<td>Mise à prix</td>
