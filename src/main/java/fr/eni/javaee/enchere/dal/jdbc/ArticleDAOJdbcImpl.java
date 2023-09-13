@@ -6,8 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.javaee.enchere.bll.ArticleManager;
+import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Categorie;
@@ -128,22 +131,32 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 		return article;
 	}
 	
-	private final static String UPDATE_ENCHERES = "UPDATE ENCHERES SET montant_enchere = ?, no_acheteur = ? WHERE no_enchere = ?;";
 	private final static String UPDATE_ARTICLES = "UPDATE ARTICLES SET prix_vente = ? WHERE no_article = ?;";
+	private final static String UPDATE_ENCHERES = "UPDATE ENCHERES SET montant_enchere = ?, no_acheteur = ? WHERE no_enchere = ?;";
 
 	@Override
 	public void faireEnchere(int noArticle) {
+		List<Enchere> encherisseurs = new ArrayList<>();
 
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			Article article = ArticleManager.getInstance().selectByIdArticle(noArticle);
 			int noEnchere = article.getEnchere().getNoEnchere();
+			Enchere enchere = EnchereManager.getInstance().selectEncherebyId(noEnchere);
 			
 			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLES);
 			pstmt.setInt(1, article.getPrixVente());
+			pstmt.setInt(2, noArticle);
 			pstmt.executeUpdate();
 			
 			pstmt = cnx.prepareStatement(UPDATE_ENCHERES);
+			pstmt.setInt(1, enchere.getMontantEnchere());
+			pstmt.setInt(2, enchere.getAcheteur().getNoUtilisateur());
+			pstmt.setInt(3, noEnchere);
+			pstmt.executeUpdate();
 			
+			enchere.setArticle(article);
+			
+			encherisseurs.add(enchere);
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

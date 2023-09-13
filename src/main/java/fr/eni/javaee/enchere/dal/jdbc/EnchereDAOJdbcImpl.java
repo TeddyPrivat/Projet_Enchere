@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Statement;
 
+import fr.eni.javaee.enchere.bll.ArticleManager;
+import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Article;
 import fr.eni.javaee.enchere.bo.Article.Etat;
 import fr.eni.javaee.enchere.bo.Categorie;
@@ -76,7 +78,6 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 				
 				Categorie categorie = new Categorie(noCategorie, libelle);
 				article.setCategorie(categorie);
-				System.out.println("Article du select" + article);
 				enchere.setArticle(article);
 				Utilisateur vendeur = new Utilisateur(noVendeur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, motDePasse, credit);
 				enchere.setUtilisateur(vendeur);
@@ -113,11 +114,40 @@ public class EnchereDAOJdbcImpl implements EnchereDAO{
 		}
 		return article;
 	}
+	
+	private final static String SELECT_ENCHERE_BY_ID = "SELECT * FROM ENCHERES AS e INNER JOIN ARTICLES AS a ON e.no_article = a.no_article LEFT JOIN UTILISATEURS AS u ON e.no_acheteur = u.no_utilisateur WHERE e.no_enchere = ?;";
 
 	@Override
 	public Enchere selectEncherebyId(int noEnchere) {
-		// TODO Auto-generated method stub
-		return null;
+		Enchere enchere = null;
+		
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ENCHERE_BY_ID);
+			pstmt.setInt(1, noEnchere);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
+				int montantEnchere = rs.getInt("montant_enchere");
+				int noArticle = rs.getInt("no_article");
+				int noVendeur = rs.getInt("no_vendeur");
+				int noAcheteur = rs.getInt("no_acheteur");
+				enchere = new Enchere(dateEnchere, montantEnchere);
+				
+				Article article = ArticleManager.getInstance().selectByIdArticle(noArticle);
+				enchere.setArticle(article);
+				
+				Utilisateur vendeur = UtilisateurManager.getInstance().selectInfoUtilisateur(noVendeur);
+				enchere.setUtilisateur(vendeur);
+				
+				Utilisateur acheteur = UtilisateurManager.getInstance().selectInfoUtilisateur(noAcheteur);
+				enchere.setAcheteur(acheteur);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return enchere;
 	}
 	
 }

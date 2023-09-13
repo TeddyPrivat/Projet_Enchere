@@ -50,7 +50,7 @@
 			<form method="post" action="ServletDetailsVente">
 				<tr>
 					<td><label for="proposition">Ma proposition </label></td>
-					<td><input type="number" name="proposition" id="proposition" value="${articleEnVente.enchere.montantEnchere }" step="5" min="0"/>
+					<td><input type="number" name="proposition" id="proposition" value="${articleEnVente.enchere.montantEnchere }" step="5" min="${articleEnVente.enchere.montantEnchere + 5}" max="${articleEnVente.enchere.acheteur.credit}"/>
 					<td><input type="submit" value="Enchérir"/></td>
 				</tr>
 			</form>

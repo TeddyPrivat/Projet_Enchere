@@ -27,4 +27,8 @@ public class EnchereManager {
 		return DAOFactory.getEnchereDAO().selectNomArticleLike(articleNom);
 	}
 	
+	public Enchere selectEncherebyId(int noEnchere) {
+		return DAOFactory.getEnchereDAO().selectEncherebyId(noEnchere);
+	}
+	
 }
