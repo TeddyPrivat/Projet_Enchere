@@ -92,4 +92,14 @@
     <servlet-name>ServletSuppressionCompte</servlet-name>
     <url-pattern>/ServletSuppressionCompte</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletEncheres</display-name>
+    <servlet-name>ServletEncheres</servlet-name>
+    <servlet-class>fr.eni.javaee.enchere.servlets.ServletEncheres</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEncheres</servlet-name>
+    <url-pattern>/ServletEncheres</url-pattern>
+  </servlet-mapping>
 </web-app>

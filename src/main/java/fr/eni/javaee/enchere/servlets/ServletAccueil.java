@@ -7,6 +7,7 @@ import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
+import fr.eni.javaee.enchere.bo.Article;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -27,9 +28,6 @@ public class ServletAccueil extends HttpServlet {
 		categories = CategorieManager.getInstance().selectAll();
 		this.getServletContext().setAttribute("categories", categories);
 		
-		encheres = EnchereManager.getInstance().selectAllEncheres();
-		this.getServletContext().setAttribute("encheres", encheres);
-		
 	}
 
 
@@ -39,7 +37,17 @@ public class ServletAccueil extends HttpServlet {
 		if(session != null) {
 			session.getAttribute("estConnecte");
 		}
-		
+		encheres = EnchereManager.getInstance().selectAllEncheres();
+		request.setAttribute("encheres", encheres);
+		// if filtre 
+		/*TODO recherche par nom similaire
+		if(request.getParameter("rechercheArticle") != null){
+			String rechercheArticle = (String) session.getAttribute("rechercheArticle");
+			// rajoute tes filtre sur
+			//encheres = contientMotDeLaRecherche(encheres, rechercheArticle);
+			
+		}
+		*/
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
 		rd.forward(request, response);
 	}
@@ -68,7 +76,7 @@ public class ServletAccueil extends HttpServlet {
 			request.setAttribute("achat", achat);
 		}
 		
-		if(request.getParameter("ventes") != null) {
+		if(request.getParameter("vente") != null){
 			int vente = Integer.valueOf(request.getParameter("ventes"));
 			request.setAttribute("vente", vente);
 		}
