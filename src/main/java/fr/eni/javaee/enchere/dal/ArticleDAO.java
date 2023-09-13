@@ -9,6 +9,6 @@ public interface ArticleDAO {
 	
 	public Article selectByIdArticle(int noArticle);
 	
-	public void faireEnchere(int noArticle);
+	public void faireEnchere(Article article);
 
 }

@@ -39,6 +39,13 @@ public class ServletNouvelleVente extends HttpServlet {
 		Utilisateur adresseVendeur = UtilisateurManager.getInstance().selectInfoUtilisateur(noVendeur);
 		request.setAttribute("adresseVendeur", adresseVendeur);
 		
+		boolean boutonModifier = false;
+		boolean boutonSupprimer = false;
+		boutonModifier = true;
+		boutonSupprimer = true;
+		request.setAttribute("boutonModification", boutonModifier);
+		request.setAttribute("boutonSupprimer", boutonSupprimer);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/nouvellevente.jsp");
 		rd.forward(request, response);
 		
@@ -51,25 +58,15 @@ public class ServletNouvelleVente extends HttpServlet {
 		int noVendeur = (int)session.getAttribute("estConnecte");
 		
 		String nomArticle = request.getParameter("article");
-		System.out.println("Nom : " + nomArticle);
 		String description = request.getParameter("description");
-		System.out.println("Description : " + description);
 		int noCategorie = Integer.valueOf(request.getParameter("categorie-select"));
-		System.out.println("Numéro de la catégorie : " + noCategorie);
 		int miseAPrix = Integer.valueOf(request.getParameter("prix"));
-		System.out.println("Prix : " + miseAPrix);
 		int prixVente = Integer.valueOf(request.getParameter("prix"));
-		System.out.println("Prix de vente : " + prixVente);
 		LocalDate dateDebutEnchere = LocalDate.parse(request.getParameter("debutEnchere"));
-		System.out.println("Début des enchères : " + dateDebutEnchere);
 		LocalDate dateFinEnchere = LocalDate.parse(request.getParameter("finEnchere"));
-		System.out.println("Fin des enchères : " + dateFinEnchere);
 		String rue = request.getParameter("rue");
-		System.out.println("Rue : " + rue);
 		String codePostal = request.getParameter("codePostal");
-		System.out.println("Code postal : " + codePostal);
 		String ville = request.getParameter("ville");
-		System.out.println("Ville : " + ville);
 		
 		Categorie categorie = null;
 		for(Categorie c : categories) {

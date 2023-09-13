@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>Meilleure offre</td>
-			<td>${articleEnVente.enchere.montantEnchere } pts par ${articleEnVente.enchere.acheteur.pseudo }</td>
+			<td>${articleEnVente.enchere.montantEnchere } pts <c:if test="${articleEnVente.enchere.acheteur != null }">par ${articleEnVente.enchere.acheteur.pseudo }</c:if></td>
 		</tr>
 		<tr>
 			<td>Mise à prix</td>
@@ -50,7 +50,7 @@
 			<form method="post" action="ServletDetailsVente">
 				<tr>
 					<td><label for="proposition">Ma proposition </label></td>
-					<td><input type="number" name="proposition" id="proposition" value="${articleEnVente.enchere.montantEnchere }" step="5" min="${articleEnVente.enchere.montantEnchere + 5}" max="${articleEnVente.enchere.acheteur.credit}"/>
+					<td><input type="number" name="proposition" id="proposition" value="${articleEnVente.enchere.montantEnchere }" step="5" min="${articleEnVente.enchere.montantEnchere + 5}" max="${creditAcheteur}"/>
 					<td><input type="submit" value="Enchérir"/></td>
 				</tr>
 			</form>
