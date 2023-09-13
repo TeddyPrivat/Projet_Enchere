@@ -12,7 +12,7 @@
 	<h1>Bienvenue sur le site des enchères par troc</h1>
 	<c:choose>
 		<c:when test="${estConnecte != null}">
-			<a href="ServletDetailsVente">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <form method = "POST" action="ServletAccueil"><input type = "submit" name = "deconnexion" value = "Déconnexion"></form>
+			<a href="ServletEncheres">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <form method = "POST" action="ServletAccueil"><input type = "submit" name = "deconnexion" value = "Déconnexion"></form>
 
 		</c:when>
 		<c:otherwise>
