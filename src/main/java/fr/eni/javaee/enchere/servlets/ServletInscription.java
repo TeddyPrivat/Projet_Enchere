@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import fr.eni.javaee.enchere.bll.DAOFactory;
+import fr.eni.javaee.enchere.bll.UtilisateurManager;
 import fr.eni.javaee.enchere.bo.Utilisateur;
 
 /**
@@ -34,13 +34,13 @@ public class ServletInscription extends HttpServlet {
 		String ville = request.getParameter("ville");
 		String motDePasse = request.getParameter("motDePasse");
 		//check si le pseudo ou mail sont déjà dans la BDD ou non 
-		boolean isPseudoUsed = DAOFactory.getUtilisateurDAO().checkIfPseudoIsUsed(pseudo);
-		boolean isEmailUsed = DAOFactory.getUtilisateurDAO().checkIfEmailIsUsed(email);
+		boolean isPseudoUsed = UtilisateurManager.getInstance().checkIfPseudoIsUsed(pseudo);
+		boolean isEmailUsed = UtilisateurManager.getInstance().checkIfEmailIsUsed(email);
 		
 		//on vérifie que le mot de passe est similaire dans les 2 inputs + on vérifie que le pseudo ou l'email ne sont pas déjà utilisés
 		if(request.getParameter("confirmationMotDePasse").equals(request.getParameter("motDePasse")) && !isPseudoUsed && !isEmailUsed) {
 			Utilisateur utilisateur = new Utilisateur(pseudo,nom,prenom,email,telephone,rue,codePostal,ville,motDePasse);
-			DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
+			UtilisateurManager.getInstance().insertUtilisateur(utilisateur);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/connexion.jsp");	//si on peut créer le compte alors on le dirige vers la page de connexion
 			rd.forward(request, response);
 		}else {

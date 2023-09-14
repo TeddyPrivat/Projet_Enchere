@@ -8,32 +8,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="./CSS/apparence.css">
 	<title>Modification de profil</title>
 	<style>
-	.incorrect{
-		color:red;
-		
-	}
-	form{
-		display:table;
-	}
-	p     { display: table-row;  }
-	label { display: table-cell; }
-	input { display: table-cell; }
+
 	</style>
 </head>
 <body>
-
-	<div>
-		<a href="ServletAccueil"><img src="images/encheres.png"
-			alt="logo qui renvoie à l'accueil" /></a>
-
-	</div>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil" /></a>
+			<h1 class="navbar-brand">Mon profil</h1>
+			<p></p>
+	    </div>
+    </nav>
 	<br>
 
-<div align = "center"> 
+<div align="center"> 
 
-	<h3>Mon profil</h3>
+	
 	<form method="POST" action="ModificationDeProfil">
 	
 	
@@ -101,10 +94,9 @@
 		<c:if test="${!isNouveauMotDePasseCorrect && isNouveauMotDePasseCorrect != null}">
 			<p class="incorrect">Nouveau mot de passe et sa confirmation : incorrects</p>
 		</c:if>
-		<div>
+		<div class = "boutonModif">
 			<input type="submit" value="Enregistrer" class="btn btn-success"/>
-		</div>
-		<div>
+
 			<a href="ServletSuppressionCompte" class="btn btn-danger">Supprimer mon compte</a>
 		</div>
 	</form>

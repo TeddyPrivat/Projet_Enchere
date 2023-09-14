@@ -48,7 +48,7 @@
 	<br>
 
 	<br>
-	<a href="#" class="btn btn-success">Mot de passe oublié</a> <a href="ServletInscription" class="btn btn-success">Créer un compte</a>
+	<a href="#" class="btn btn-success">Mot de passe oublié</a> <a href="ServletInscription" class="btn btn-warning">Créer un compte</a>
 	<br>
 </div>
 

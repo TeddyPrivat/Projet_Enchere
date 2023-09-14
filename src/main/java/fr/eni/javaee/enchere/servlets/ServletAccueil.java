@@ -7,7 +7,6 @@ import fr.eni.javaee.enchere.bll.CategorieManager;
 import fr.eni.javaee.enchere.bll.EnchereManager;
 import fr.eni.javaee.enchere.bo.Categorie;
 import fr.eni.javaee.enchere.bo.Enchere;
-import fr.eni.javaee.enchere.bo.Article;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -76,7 +75,7 @@ public class ServletAccueil extends HttpServlet {
 			request.setAttribute("achat", achat);
 		}
 		
-		if(request.getParameter("vente") != null){
+		if(request.getParameter("ventes") != null){
 			int vente = Integer.valueOf(request.getParameter("ventes"));
 			request.setAttribute("vente", vente);
 		}

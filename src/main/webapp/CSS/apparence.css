@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+.nav navbar-nav navbar-right{
+	flex-direction: row;
+}
+
+th, td{
+	padding: 5px;
+}
+
+.retrait{
+		border:1px black solid;
+		width: 330px;
+		margin-left: 5px;
+}
+th{
+	text-align: left;
+}
+
+table{
+	margin-left: 5px;
+}
+
+h5{
+	margin-left: 10px;
+}
+
+.groupe-bouton{
+	margin-left: 5px;
+}
+
+.uneEnchere{
+		border: 1px solid;
+		height:170px;
+		width:300px;
+		display:block;
+		padding-left : 20px;
+		margin-left : 30px;
+}
+.ToutesLesEncheres{
+	display:flex;
+}
+
+.incorrect {
+    color: red;
+}
+
+.groupeBouton{
+	justify-content: space-evenly;
+}
+
+td{
+	text-align: center;
+}
+
+p     {
+	 display: table-row;  
+}
+
+form{
+	display:table;
+}
+label {
+	 display: table-cell;
+}
+
+input {
+	 display: table-cell;
+}
+
+.boutonModif{
+	text-align: center;
+}
+
+.labelProfil{
+	font-weight: bold;
+	text-align: left;
+}
+
+.formulaire{
+			text-align:center;
+}
