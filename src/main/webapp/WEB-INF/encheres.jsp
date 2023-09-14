@@ -4,21 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.uneEnchere{
-	border: 1px solid;
-	height:150px;
-	width:230px;
-	display:block;
-	padding-left : 20px;
-	margin-left : 30px;
-}
-.ToutesLesEncheres{
-	display:flex;
-}
-</style>
-<meta charset="UTF-8">
-<title>Encheres</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<style>
+	.uneEnchere{
+		border: 1px solid;
+		height:150px;
+		width:230px;
+		display:block;
+		padding-left : 20px;
+		margin-left : 30px;
+	}
+	.ToutesLesEncheres{
+		display:flex;
+	}
+	</style>
+	<meta charset="UTF-8">
+	<title>Encheres</title>
 </head>
 <body>	
 
@@ -40,7 +43,7 @@
 			<p>Mise à prix : ${encheres.article.prixVente } </p>
 			<p>Prix de vente : ${encheres.article.prixVente }</p>
 			<c:if test="${encheres.article.etatVente == 'En vente'}">
-				<a href="NouvelleVente?noArticle=${encheres.article.noArticle }">Coucou</a>
+				<a href="NouvelleVente?noArticle=${encheres.article.noArticle }" class="btn btn-success">Détails</a>
 			</c:if>
 			</div>
 		</c:when>

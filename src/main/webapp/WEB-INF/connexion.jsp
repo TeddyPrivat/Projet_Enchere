@@ -4,7 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 <title>Connexion</title>
 <style>
 .infoConnexion {
@@ -13,14 +16,12 @@
 </style>
 </head>
 <body>
-
-	<div>
-		<a href="ServletAccueil"><img src="images/encheres.png"
-			alt="logo qui renvoie à l'accueil" /></a>
-	</div>
-
-
-<div align = "center"> 
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<a href="ServletAccueil"><img src="images/encheres.png" alt="logo qui renvoie à l'accueil" /></a>
+		</div>
+	</nav>
+	<div align = "center"> 
 	<br>
 	<form method="post" action="ServletConnexion">
 		<div>
@@ -36,20 +37,18 @@
 			<p class="infoConnexion">Mot de passe ou identifiant incorrect</p>
 		</c:if>
 
- <br>
-		<input type="submit" value="Connexion" />
+ 		<br>
+ 		<div>
+			<input type="checkbox" id="souvenir" name="souvenir" />
+			<label for="souvenir">Se souvenir de moi</label>
+		</div>
+		<br>
+		<input type="submit" value="Connexion" class="btn btn-success"/>
 	</form>
 	<br>
 
-	<div>
-		<input type="checkbox" id="souvenir" name="souvenir" /> <label
-			for="souvenir">Se souvenir de moi</label>
-	</div>
-
 	<br>
-	<a href="#">Mot de passe oublié</a>
-	<br>
-	<a href="ServletInscription">Créer un compte</a>
+	<a href="#" class="btn btn-success">Mot de passe oublié</a> <a href="ServletInscription" class="btn btn-success">Créer un compte</a>
 	<br>
 </div>
 

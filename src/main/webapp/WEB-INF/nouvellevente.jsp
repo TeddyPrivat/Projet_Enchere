@@ -4,18 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Nouvelle vente</title>
-
-<style>
-.retrait{
-	border:1px black solid;
-	height :100px;
-	width: 300px;
-	padding-top: 20px;
-	padding-left : 20px;
-}
-</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<title>Nouvelle vente</title>
+	<style>
+	.retrait{
+		border:1px black solid;
+		height :100px;
+		width: 300px;
+		padding-top: 20px;
+		padding-left : 20px;
+	}
+	</style>
 </head>
 <body>
 	<div>
@@ -74,10 +76,9 @@
 	</div>
 	<br>
 	<br>
-	<input type="submit" value="Enregistrer"/>
-	<input type="reset" value="Annuler"/>
-	<a href="">Modifier</a>
-	<a href="">Annuler la vente</a>
+	<input type="submit" value="Enregistrer" class="btn btn-success"/>
+	<input type="reset" value="Annuler" class="btn btn-success"/>
+	<a href="" class="btn btn-success">Annuler la vente</a>
 	
 	</form>
 </body>

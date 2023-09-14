@@ -4,26 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Enchères</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="apparence.css">
+	<title>Enchères</title>
 </head>
 <body>
-	<img src="images/encheres.png" alt="logo du site d'enchères">
-	<h1>Bienvenue sur le site des enchères par troc</h1>
-	<c:choose>
-		<c:when test="${estConnecte != null}">
-			<a href="ServletEncheres">Enchères</a> <a href="ServletNouvelleVente">Vendre un article</a> <a href="ServletProfilUtilisateur">Mon profil</a> <form method = "POST" action="ServletAccueil"><input type = "submit" name = "deconnexion" value = "Déconnexion"></form>
-
-		</c:when>
-		<c:otherwise>
-			<a href="ServletConnexion">S'inscrire - Se connecter</a>
-		</c:otherwise>
-	</c:choose>
-	<br>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<img src="images/encheres.png" alt="logo du site d'enchères">
+			<div class="navbar-header">
+				<h1 class="navbar-brand">Bienvenue sur le site des enchères par troc</h1>
+			</div>
+			<c:choose>
+				<c:when test="${estConnecte != null}">
+				 	<div class="nav navbar-nav navbar-right" style="flex-direction: row;">
+						<a href="ServletEncheres" class="btn btn-success navbar-btn">Enchères</a><a href="ServletNouvelleVente" class="btn btn-success navbar-btn">Vendre un article</a><a href="ServletProfilUtilisateur" class="btn btn-success navbar-btn">Mon profil</a><form method = "POST" action="ServletAccueil"><input type = "submit" class = "btn btn-success navbar-btn" name = "deconnexion" value = "Déconnexion"></form>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<a href="ServletConnexion" class="btn btn-success">S'inscrire - Se connecter</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</nav>
 	<form method="POST" action="ServletAccueil">
 		<h2>Liste des enchères</h2>
+		<br>
 		Filtres :
-		<input type="text" name="rechercheArticle" placeholder="Le nom de l'article contient">
+		<br>
+		<i class="glyphicon glyphicon-search"></i><input type="text" name="rechercheArticle" placeholder="Le nom de l'article contient" >
 		<br>
 		<label for="categorie">Catégorie :</label>
 		<select id="categorie" name="categorie">
@@ -69,7 +81,8 @@
 			</table>
 		</c:if>
 		<br>
-		<input type="submit" value="Rechercher">
+		<br>
+		<input type="submit" value="Rechercher" class="btn btn-success">
 	</form>
 	<c:choose>
 		<c:when test="${encheres.size() > 0}">
